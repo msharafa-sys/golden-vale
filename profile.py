@@ -26,7 +26,7 @@ pages.append(f'''<div class="page dark">
 
 # 02 المحتويات
 items = [("نظرة عامة","Overview",3),("كلمة رئيس مجلس الإدارة","Chairman's Message",4),("الرؤية والرسالة","Vision & Mission",5),("القيم الجوهرية","Core Values",6),
-         ("خدماتنا","Services",7),("معرض الأعمال","Portfolio",11),("منهجية العمل","How We Work",12),("لماذا جولدن فيل","Why Golden Vale",13),("العملاء والشركاء","Clients & Partners",14),("التواصل","Contact",15)]
+         ("خدماتنا","Services",7),("نماذج من أعمال الفريق","Portfolio",11),("منهجية العمل","How We Work",12),("لماذا جولدن فيل","Why Golden Vale",13),("العملاء والشركاء","Clients & Partners",14),("التواصل","Contact",15)]
 rows = "".join(f'<div style="display:flex;align-items:baseline;gap:28px;border-top:1px solid rgba(140,127,62,.4);padding:6px 0"><span class="num olive" style="font-size:28px;width:70px">{i+1:02d}</span><span style="font-size:29px;font-weight:400;flex:1">{a}</span><span class="lat" style="font-size:14px;color:var(--deep)">{b}</span><span class="num" style="font-size:24px;width:50px;text-align:left">{p:02d}</span></div>' for i,(a,b,p) in enumerate(items))
 pages.append(f'''<div class="page">{hdr(2,"المحتويات",620)}
  <div style="position:absolute;right:120px;top:150px;width:1000px"><h1>المحتويات</h1><div class="rule" style="margin:18px 0 14px"></div>{rows}</div>
@@ -91,10 +91,10 @@ for k,(n,en,ar,desc,subs,kind,dk) in enumerate(svcs):
    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">{boxes}</div></div>{ftr(pg,760)}</div>''')
 
 # معرض الأعمال
-WORKS = [('work-1', 'بوابة فعالية موسمية', ''), ('work-2', 'لوحة مضيئة — تركيب ليلي', ''), ('work-3', 'جناح معرض — إعلان معلّق', ''), ('work-4', 'جناح معرض', ''), ('work-5', 'مجسّم كبير — مرحلة التركيب', ''), ('work-6', 'تصميم ثلاثي الأبعاد لجناح', 'تصميم')]
-tiles = "".join(f'<div><div style="position:relative;height:280px;overflow:hidden;background:var(--char)"><img src="../images/{n}.jpg" style="width:100%;height:100%;object-fit:cover;display:block">' + (f'<span class="tag" style="left:0;top:0">{c}</span>' if c else '') + f'</div><div style="border-top:3px solid var(--olive);padding:10px 0 0;font-size:22px;font-weight:400">{t}</div></div>' for n,t,c in WORKS)
-pages.append(f'''<div class="page">{hdr(11,"معرض الأعمال")}
- <div style="position:absolute;right:120px;top:160px"><div class="lat olive" style="font-size:18px;margin-bottom:12px">Portfolio</div><h1 style="font-size:60px">معرض الأعمال</h1></div>
+WORKS = [('work-1', 'بوابة فعالية موسمية', ''), ('work-2', 'لوحة مضيئة — تركيب ليلي', ''), ('work-3', 'جناح معرض — إعلان معلّق', ''), ('work-4', 'جناح معرض', ''), ('work-5', 'مجسّم كبير — مرحلة التركيب', ''), ('', 'مكان لعمل منفذ إضافي', 'PH')]
+tiles = "".join(f'<div><div style="position:relative;height:280px;overflow:hidden;background:var(--char)">' + (f'<img src="../images/{n}.jpg" style="width:100%;height:100%;object-fit:cover;display:block">' if n else '<div class="ph" style="width:100%;height:100%;background:var(--cream)">[صورة عمل منفذ — تُضاف لاحقًا]</div>') + f'</div><div style="border-top:3px solid var(--olive);padding:10px 0 0;font-size:22px;font-weight:400">{t}</div></div>' for n,t,c in WORKS)
+pages.append(f'''<div class="page">{hdr(11,"نماذج من أعمال الفريق")}
+ <div style="position:absolute;right:120px;top:160px"><div class="lat olive" style="font-size:18px;margin-bottom:12px">Portfolio</div><h1 style="font-size:60px">نماذج من أعمال الفريق</h1></div>
  <div class="small deepc" style="position:absolute;left:120px;top:200px;font-size:17px;max-width:700px;text-align:left">[ملاحظة داخلية: تُنشر الأعمال وما يظهر فيها من أسماء وشعارات بموافقة أصحابها الكتابية.]</div>
  <div style="position:absolute;left:120px;right:120px;top:310px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px 24px">{tiles}</div>{ftr(11)}</div>''')
 
