@@ -163,12 +163,19 @@ def casestudy(n):
             f'<div style="position:absolute;right:120px;top:930px;font-size:18px" class="deepc">تُملأ بمشروع منفذ وبموافقة كتابية من العميل، ولا تُنشر أرقام غير موثّقة.</div>' + ftr(n))
 add(casestudy)
 
-# 21 العملاء والشركاء
+# 21 العملاء والشركاء — يقرأ clients.json؛ لا يظهر اسم إلا إذا consent=true (موافقة كتابية)
+import json
+CL = json.load(open("clients.json", encoding="utf-8"))
 def clients(n):
-    cl = "".join('<div class="ph" style="height:170px;font-size:19px">[اسم العميل]<br>[يُضاف]</div>' for _ in range(12))
+    boxes = ""
+    for c in CL[:12]:
+        if c.get("consent"):
+            boxes += f'<div style="height:170px;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(237,230,216,.08);font-size:26px;font-weight:400;color:var(--cream);padding:16px">{c["name"]}</div>'
+        else:
+            boxes += '<div class="ph" style="height:170px;font-size:19px">[عميل — بانتظار الموافقة]<br>[يُضاف]</div>'
     return (hdr(n,"العملاء والشركاء") + title("Clients & Partners","عملاؤنا وشركاؤنا",dark=True,top=160) +
             '<div style="position:absolute;right:120px;top:300px;font-size:19px;color:var(--olive-l)">[تُضاف الأسماء والشعارات بعد الحصول على موافقة كل عميل كتابيًا، ولا يُنشر أي اسم قبل ذلك.]</div>' +
-            f'<div style="position:absolute;left:120px;right:120px;top:400px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px">{cl}</div>' + ftr(n))
+            f'<div style="position:absolute;left:120px;right:120px;top:400px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px">{boxes}</div>' + ftr(n))
 add(clients, "dark")
 
 # 22 الفريق

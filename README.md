@@ -8,6 +8,8 @@
 - `quotes/*.json` بيانات العروض، و`quote.py` المولّد (`python3 quote.py quotes/X.json build/x.html`)
 - المصدر: `logos.py` `common.py` `profile.py` `guide.py` `process_photos.py` `render.cjs`
 
+- `clients.json` — قائمة العملاء للصفحة 21: لا يظهر اسم إلا مع `consent: true` (موافقة كتابية)
+
 ## قواعد ثابتة
 - اسم الشركة في كل مستند: **Golden Vale** (لاتينيًا فقط، بلا ترجمة عربية).
 - لا اسم للمالك في عروض الأسعار.
