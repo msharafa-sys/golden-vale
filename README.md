@@ -5,7 +5,7 @@
 - `Golden-Vale_Quotation_GV-2026-0105.pdf` — عرض السعر، و`Golden-Vale_Quotation-Template.pdf` قالب فارغ
 - `logos/` — شعارات SVG (اتجاهان × شعار/أيقونة × ملوّن/معكوس/أسود/أبيض)
 - `quotes/*.json` بيانات العروض، و`quote.py` المولّد (`python3 quote.py quotes/X.json build/x.html`)
-- المصدر: `logos.py` `common.py` `profile.py` `guide.py` `process_images.py` `render.cjs`
+- المصدر: `logos.py` `common.py` `profile.py` `guide.py` `process_photos.py` `render.cjs`
 
 ## قواعد ثابتة
 - اسم الشركة في كل مستند: **Golden Vale** (لاتينيًا فقط، بلا ترجمة عربية).

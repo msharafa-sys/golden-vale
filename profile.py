@@ -8,6 +8,13 @@ COVER = {"A":(760,230),"B":(560,200),"C":(600,170)}[D]
 CONTACT_W = {"A":440,"B":340,"C":420}[D]
 
 PH_NOTE = "[نص مؤقت]"
+CUT = 52
+def photo(name, x, y, w, h, tag=True, anchor="left"):
+    clip = f"polygon(0 0,{w-CUT}px 0,{w}px {CUT}px,{w}px {h}px,0 {h}px)"
+    t = '<span style="position:absolute;left:0;bottom:0;background:rgba(27,26,24,.72);color:#EDE6D8;font-size:13px;padding:4px 14px;font-weight:400">صورة توضيحية</span>' if tag else ""
+    return (f'<div style="position:absolute;{anchor}:{x}px;top:{y}px;width:{w}px;height:{h}px;clip-path:{clip};overflow:hidden;background:var(--char)">'
+            f'<img src="../images/{name}.jpg" style="width:100%;height:100%;object-fit:cover;display:block">{t}</div>')
+
 def hdr(n, section, left=120):
     return f'<div class="hdr" style="left:{left}px"><span>{section}</span><span class="lat">Golden Vale · {n:02d}</span></div>'
 def ftr(n, left=120):
@@ -42,7 +49,7 @@ pages.append(f'''<div class="page">{hdr(3,"نظرة عامة")}
   <p>تأسست <bdi>Golden Vale</bdi> عام 2026 في الرياض لتقدّم للعلامات التجارية والجهات حلولًا متكاملة في الدعاية والإعلان وتنظيم الفعاليات وإدارة الهوية البصرية وتصميم التجارب الإبداعية، عبر نقطة اتصال واحدة من الفكرة حتى التسليم.</p>
   <p style="margin-top:14px" class="small deepc">{PH_NOTE} نموذج التنفيذ (فريق داخلي، أو شركاء إنتاج معتمدون، أو كلاهما) يُحدَّد قبل الاعتماد النهائي.</p></div>
  <div style="position:absolute;left:120px;top:210px;width:560px;background:var(--cream);padding:34px 40px">{fx}</div>
- <div class="ph" style="position:absolute;left:120px;top:700px;width:560px;height:250px">[صورة — تُضاف لاحقًا]</div>{ftr(3)}</div>''')
+ {photo("overview",120,700,560,250)}{ftr(3)}</div>''')
 
 # 04 كلمة رئيس مجلس الإدارة
 pages.append(f'''<div class="page cream">
@@ -76,24 +83,24 @@ svcs = [("01","Advertising","الدعاية والإعلان","حملات تبد
  ("02","Events","تنظيم الفعاليات","من الفكرة إلى الافتتاح، ندير كل مرحلة بدقة لتقديم فعاليات منظمة وتجربة تُرضي الحضور.",["المؤتمرات والملتقيات","الفعاليات المؤسسية والموسمية","حفلات الإطلاق","الإنتاج والإضاءة والصوت"],"beams",True),
  ("03","Brand Identity","إدارة الهوية البصرية","هوية متسقة في كل نقطة تماس، من اللوحة إلى الهدية إلى الزي الموحد.",["تصميم الهوية البصرية","المطبوعات والتغليف","اللوحات والواجهات","الزي الموحد والهدايا"],"tri",False),
  ("04","Creative Experiences","التجارب الإبداعية","تجارب تفاعلية تجعل الزائر جزءًا من حكاية علامتك.",["المعارض والأجنحة","التفعيلات التفاعلية","مناطق التصوير","التجارب الرقمية"],"grid",True)]
-IMGS = [("svc-ads","لوحة مضيئة — تركيب ليلي"),("svc-events","بوابة فعالية موسمية"),("svc-brand","زي موحد للمتطوعين"),("svc-exp","جناح معرض")]
+IMGS = ["svc-ads","svc-events","svc-brand","svc-exp"]
 for k,(n,en,ar,desc,subs,kind,dk) in enumerate(svcs):
     pg = 7+k
-    boxes = "".join(f'<div style="border:1.5px solid {"rgba(184,169,94,.7)" if dk else "rgba(140,127,62,.6)"};padding:26px 28px;font-size:25px;font-weight:400;background:{"transparent" if dk else "var(--cream)"}">{s}</div>' for s in subs)
-    pages.append(f'''<div class="page {"dark" if dk else ""}">{hdr(pg,"خدماتنا",760)}
- <div class="ph" style="position:absolute;left:0;top:0;bottom:0;width:700px;border:none;background:#2a2926;color:#9b9686;font-size:22px">[صورة — تُضاف لاحقًا]</div>
- <div style="position:absolute;right:120px;top:180px;width:960px">
+    boxes = "".join(f'<div style="border:1.5px solid {"rgba(237,230,216,.28)" if dk else "rgba(27,26,24,.18)"};padding:22px 26px;font-size:24px;font-weight:400;background:{"transparent" if dk else "var(--cream)"}">{s}</div>' for s in subs)
+    pages.append(f'''<div class="page {"dark" if dk else ""}">{hdr(pg,"خدماتنا")}
+ {photo(IMGS[k], 120, 170, 880, 540)}
+ <div style="position:absolute;left:120px;top:740px;width:880px;display:grid;grid-template-columns:1fr 1fr;gap:16px">{boxes}</div>
+ <div style="position:absolute;right:120px;top:170px;width:700px">
    <div style="display:flex;align-items:baseline;gap:26px"><span class="num" style="font-size:96px;color:{"var(--olive-l)" if dk else "var(--olive)"}">{n}</span><span class="lat" style="font-size:18px;color:{"var(--olive-l)" if dk else "var(--olive)"}">{en}</span></div>
-   <h1 style="margin:26px 0 26px">{ar}</h1><div class="rule"></div>
-   <p style="margin:34px 0 56px;font-size:29px">{desc}</p>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">{boxes}</div></div>{ftr(pg,760)}</div>''')
+   <h1 style="margin:26px 0 30px">{ar}</h1>
+   <p style="font-size:28px">{desc}</p></div>{ftr(pg)}</div>''')
 
 # 11 منهجية العمل
 steps = [("الاستماع","نفهم هدفك وجمهورك وميزانيتك."),("التصور","نقدّم الفكرة والتصاميم وعرض السعر."),("التنفيذ","إنتاج وتشغيل بإشراف مباشر."),("المتابعة","قياس الأثر وتقرير ختامي.")]
 st = "".join(f'<div style="display:flex;align-items:center;gap:44px;border-top:1px solid rgba(140,127,62,.5);padding:24px 0"><span class="num olive" style="font-size:64px;width:130px">{i+1:02d}</span><div><h3 style="font-size:40px">{a}</h3><p class="small" style="font-size:24px;line-height:1.6">{b}</p></div></div>' for i,(a,b) in enumerate(steps))
 pages.append(f'''<div class="page">{hdr(11,"منهجية العمل")}
  <div style="position:absolute;right:120px;top:180px;width:1000px"><div class="lat olive" style="font-size:18px;margin-bottom:20px">How We Work</div><h1>آلية العمل</h1><div style="margin-top:34px">{st}</div></div>
- <div class="ph" style="position:absolute;left:120px;top:190px;width:520px;height:760px">[صورة — تُضاف لاحقًا]</div>{ftr(11)}</div>''')
+ {photo("method",120,190,520,760)}{ftr(11)}</div>''')
 
 # 12 لماذا
 why = [("نقطة اتصال واحدة","تصميم وإنتاج وتشغيل تحت إدارة واحدة."),("فكرة أصيلة","مفاهيم مستوحاة من هوية العلامة والمكان."),("التزام بالمواعيد","جداول معتمدة ومتابعة مستمرة."),("شفافية التسعير","عروض أسعار مفصلة ونطاق عمل واضح."),("جودة التنفيذ","خامات ومعايير إنتاج محددة سلفًا."),("دعم مستمر","متابعة قبل الفعالية وخلالها وبعدها.")]
