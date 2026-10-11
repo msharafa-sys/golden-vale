@@ -3,6 +3,8 @@
 import sys, json, html as H
 from common import logo, P
 D = json.load(open(sys.argv[1] if len(sys.argv) > 1 else "quote.json", encoding="utf-8"))
+OUT = sys.argv[2] if len(sys.argv) > 2 else "build/quote.html"
+qfmt = lambda v: f"{v:,.2f}".rstrip("0").rstrip(".")
 E = H.escape
 money = lambda v: f"{v:,.2f}"
 def cell(v, fmt=str): return fmt(v) if v is not None else "—"
@@ -12,13 +14,14 @@ for i, it in enumerate(D["items"], 1):
     q, p = it.get("qty"), it.get("price")
     tot = q * p if (q is not None and p is not None) else None
     if tot is not None: sub += tot; priced = True
-    rows += (f'<tr><td class="c">{i:02d}</td><td>{E(it["desc"])}</td><td class="c">{E(it["unit"])}</td>'
-             f'<td class="c num">{cell(q, lambda v: f"{v:g}")}</td><td class="n num">{cell(p, money)}</td><td class="n num">{cell(tot, money)}</td></tr>')
+    rows += (f'<tr><td class="c">{i:02d}</td><td><b>{E(it["desc"])}</b>{"".join(f'<div class="ln">{E(l)}</div>' for l in it.get("lines", []))}</td><td class="c">{E(it["unit"])}</td>'
+             f'<td class="c num">{cell(q, qfmt)}</td><td class="n num">{cell(p, money)}</td><td class="n num">{cell(tot, money)}</td></tr>')
 disc = D.get("discount", 0) or 0
 net = sub - disc; vat = net * D.get("vat_rate", .15); grand = net + vat
 T = lambda v: money(v) if priced else "—"
 NUM = lambda s: f'<span class="ltr num">{E(s)}</span>'
 cl = D["client"]
+CL = "<br>".join(f"<b>{k}:</b> {E(cl[f])}" for k, f in (("المسؤول","contact"),("الجوال","phone"),("البريد","email"),("المشروع","project")) if cl.get(f))
 terms = "".join(f"<li>{E(t)}</li>" for t in D["terms"])
 
 CSS = """
@@ -63,26 +66,26 @@ tr:nth-child(even) td{background:#fbf9f4}
 .foot{position:absolute;right:0;left:0;bottom:0;height:70px;background:var(--char);color:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 56px;font-size:11.5px;font-weight:300}
 .foot .lat{font-family:Jost;letter-spacing:.3em;font-size:10.5px;color:var(--olive-l);text-transform:uppercase}
 .ph{color:var(--deep)}
+td b{font-weight:600;font-size:13.5px}.ln{font-size:11.5px;line-height:1.75;color:var(--deep);font-weight:300;margin-top:3px}
 """
 body = f'''<div class="page">
  <div class="top"><div style="width:215px">{logo("A","logo","color",tagline=True)}</div>
   <div class="title"><div class="lat">Quotation</div><h1>عرض سعر</h1>
-   <div class="meta"><b>رقم العرض</b><span>{NUM(D["number"])}</span><b>التاريخ</b><span>{NUM(D["date"])}</span><b>سريان العرض</b><span>{E(D["valid_days"])} يومًا</span></div></div></div>
+   <div class="meta"><b>رقم العرض</b><span>{NUM(D["number"])}</span><b>التاريخ</b><span>{E(D["date"])}</span><b>سريان العرض</b><span>{E(D["valid_days"])} يومًا من تاريخه</span></div></div></div>
  <div class="parties">
   <div class="box"><h3>مقدَّم إلى</h3><div class="nm">{E(cl["name"])}</div>
-   <div><b>المسؤول:</b> {E(cl["contact"])}<br><b>الجوال:</b> {E(cl["phone"])}<br><b>البريد:</b> {E(cl["email"])}<br><b>المشروع:</b> {E(cl["project"])}</div></div>
+   <div>{CL}</div></div>
   <div class="box"><h3>مقدَّم من</h3><div class="nm">شركة جولدن فيل</div>
-   <div>شركة ذات مسؤولية محدودة (شخص واحد)<br><b>الرقم الوطني الموحد:</b> {NUM("7055194109")}<br><b>الرقم الضريبي:</b> {E(D["vat_number"])}<br><b>الرياض،</b> المملكة العربية السعودية</div></div>
+   <div>شركة ذات مسؤولية محدودة (شخص واحد)<br><b>الرقم الوطني الموحد:</b> {NUM("7055194109")}<br>{("<b>الرقم الضريبي:</b> " + NUM(D["vat_number"]) + "<br>") if D.get("vat_number") else ""}<b>الرياض،</b> المملكة العربية السعودية</div></div>
  </div>
  <table><thead><tr><th class="c" style="width:42px">#</th><th>البند والوصف</th><th class="c" style="width:70px">الوحدة</th><th class="c" style="width:58px">الكمية</th><th class="n" style="width:104px">سعر الوحدة</th><th class="n" style="width:110px">الإجمالي</th></tr></thead><tbody>{rows}</tbody></table>
  <div class="row"><div class="terms"><h3>الشروط والأحكام</h3><ol>{terms}</ol></div>
- <div class="totals"><div><span>المجموع</span><span class="num">{T(sub)}</span></div>
-  <div><span>الخصم</span><span class="num">{money(disc) if priced else "—"}</span></div>
-  <div><span>الإجمالي قبل الضريبة</span><span class="num">{T(net)}</span></div>
+ <div class="totals"><div><span>{"المجموع" if disc else "الإجمالي قبل الضريبة"}</span><span class="num">{T(sub)}</span></div>
+  {('<div><span>الخصم</span><span class="num">'+money(disc)+'</span></div><div><span>الإجمالي قبل الضريبة</span><span class="num">'+T(net)+'</span></div>') if disc else ""}
   <div><span>ضريبة القيمة المضافة ({D.get("vat_rate",.15)*100:g}%)</span><span class="num">{T(vat)}</span></div>
   <div class="g"><span>الإجمالي (ر.س)</span><span class="num">{T(grand)}</span></div></div></div>
- <div class="sign"><div class="l">فهد سعد العجمي<small>المؤسس ورئيس مجلس الإدارة</small></div><div class="l">اعتماد العميل<small>الاسم · التوقيع · التاريخ</small></div></div>
+ <div class="sign"><div class="l">شركة جولدن فيل — فهد سعد العجمي<small>التوقيع / الختم</small></div><div class="l">اعتماد العميل<small>الاسم / التوقيع / الختم</small></div></div>
  <div class="foot"><span class="lat">Golden Vale</span><span>الرياض · <span class="ltr num">0506221548</span> · <span class="ltr" style="font-family:Jost">fd-0@hotmail.com</span></span></div>
 </div>'''
-open("build/quote.html", "w", encoding="utf-8").write(f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>عرض سعر — جولدن فيل</title><style>{CSS}</style></head><body>{body}</body></html>')
+open(OUT, "w", encoding="utf-8").write(f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>عرض سعر — جولدن فيل</title><style>{CSS}</style></head><body>{body}</body></html>')
 print("ok", "priced" if priced else "template")
