@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 from common import *
+import sys
+D = sys.argv[1] if len(sys.argv)>1 else "A"
+LETTER = {"A":"أ","B":"ب","C":"ج"}[D]
+COVER = {"A":(760,230),"B":(560,200),"C":(600,170)}[D]
+CONTACT_W = {"A":440,"B":340,"C":420}[D]
 
 PH_NOTE = "[نص مؤقت]"
 def hdr(n, section, left=120):
@@ -12,7 +17,7 @@ pages = []
 # 01 غلاف
 pages.append(f'''<div class="page dark">
  <div style="position:absolute;inset:0">{art("valley",1920,1080,"#B8A95E",op=.16)}</div>
- <div style="position:absolute;left:0;right:0;top:230px;display:flex;justify-content:center"><div style="width:760px">{logo("A","logo","reverse")}</div></div>
+ <div style="position:absolute;left:0;right:0;top:{COVER[1]}px;display:flex;justify-content:center"><div style="width:{COVER[0]}px">{logo(D,"logo","reverse")}</div></div>
  <div style="position:absolute;left:0;right:0;top:760px;text-align:center">
    <div class="rule" style="margin:0 auto 34px"></div>
    <h2 style="font-weight:300;font-size:64px">الملف التعريفي للشركة</h2>
@@ -110,7 +115,7 @@ pages.append(f'''<div class="page cream">{hdr(14,"التواصل",780)}
  <div style="position:absolute;right:120px;top:180px;width:900px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Contact</div><h1 style="margin-bottom:40px">تواصل معنا</h1>{cr}</div>
  <div style="position:absolute;left:0;top:0;bottom:0;width:720px;background:var(--char);display:flex;align-items:center;justify-content:center">
    <div style="position:absolute;inset:0">{art("valley",720,1080,"#B8A95E",op=.18)}</div>
-   <div style="width:440px;position:relative">{logo("A","logo","reverse")}</div></div></div>''')
+   <div style="width:{CONTACT_W}px;position:relative">{logo(D,"logo","reverse")}</div></div></div>''')
 
-open("build/profile.html","w",encoding="utf-8").write(html("جولدن فيل — الملف التعريفي", pages))
+open(f"build/profile_{D}.html","w",encoding="utf-8").write(html("جولدن فيل — الملف التعريفي", pages))
 print(len(pages), "pages")

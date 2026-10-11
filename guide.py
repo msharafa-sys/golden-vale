@@ -140,39 +140,41 @@ pages.append(f'''<div class="page">{hdr(pg,"الاستخدام الصحيح وا
  <div style="position:absolute;left:120px;right:120px;top:460px;height:490px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:12px">{"".join(b1)}</div>{ftr(pg)}</div>''')
 pg += 1
 
-# ---- التطبيقات ----
-def card():
-    front = f'<div style="width:420px;height:240px;background:var(--char);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 30px rgba(0,0,0,.35)"><div style="width:240px">{logo("A","logo","reverse",tagline=False)}</div></div>'
-    back = f'''<div style="width:420px;height:240px;background:var(--cream);padding:28px 30px;box-shadow:0 18px 30px rgba(0,0,0,.25);position:relative"><div style="width:44px;position:absolute;left:28px;top:26px">{logo("A","icon","color")}</div>
-     <div style="margin-top:96px;font-weight:600;font-size:21px">فهد سعد العجمي</div><div style="font-size:14px;color:var(--deep)">المؤسس ورئيس مجلس الإدارة</div>
-     <div class="ltr" style="font-family:Jost;font-size:13px;margin-top:12px;letter-spacing:.06em">0506221548 · fd-0@hotmail.com</div><div style="font-size:12px;color:var(--deep);margin-top:2px">الرياض، المملكة العربية السعودية</div></div>'''
-    return front, back
-cf, cb = card()
-letter = f'''<div style="width:340px;height:480px;background:#fff;box-shadow:0 18px 30px rgba(0,0,0,.28);padding:32px;position:relative"><div style="width:130px">{logo("A","logo","color",tagline=False)}</div>
-  <div style="margin-top:60px">{"".join('<div style="height:7px;background:#ddd;margin:13px 0;width:%d%%"></div>'%w for w in (96,88,92,70,94,85,60))}</div>
-  <div style="position:absolute;left:32px;right:32px;bottom:26px;border-top:1px solid var(--olive);padding-top:8px;font-size:11px;color:var(--deep);display:flex;justify-content:space-between"><span>الرياض · المملكة العربية السعودية</span><span class="ltr" style="font-family:Jost">fd-0@hotmail.com</span></div></div>'''
-envelope = f'''<div style="width:520px;height:250px;background:var(--cream);box-shadow:0 14px 26px rgba(0,0,0,.28);position:relative"><div style="width:50px;position:absolute;right:26px;top:22px">{logo("A","icon","color")}</div>
-  <div style="position:absolute;left:34px;bottom:30px;font-size:13px;color:var(--deep);line-height:1.9">اسم المستلم<br>العنوان — الرياض</div><div style="position:absolute;left:0;right:0;top:0;height:95px;border-bottom:1px solid rgba(140,127,62,.5);clip-path:polygon(0 0,100% 0,50% 100%)"></div></div>'''
-folder = f'''<div style="width:330px;height:440px;background:var(--char);box-shadow:0 18px 30px rgba(0,0,0,.4);position:relative;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:0;opacity:.8">{art("valley",330,440,"#B8A95E",op=.3)}</div><div style="width:200px;position:relative">{logo("A","logo","reverse")}</div></div>'''
-fascia = f'''<div style="width:760px;height:260px;background:linear-gradient(160deg,#8d8472,#6f6858);box-shadow:0 18px 34px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;position:relative"><div style="width:60%;padding:28px;background:var(--char);box-shadow:0 0 60px 8px rgba(184,169,94,.45)">{logo("A","logo","reverse")}</div></div>'''
-polo = f'''<svg viewBox="0 0 300 300" style="width:330px"><path d="M95 20 L55 38 L12 100 L52 122 L72 96 L72 280 H228 V96 L248 122 L288 100 L245 38 L205 20 Q150 62 95 20Z" fill="#1B1A18"/><path d="M120 22 L150 70 L180 22" fill="none" stroke="#2d2c29" stroke-width="3"/><g transform="translate(176 104) scale(.2)">{logos.get("A","icon","reverse")[0].split(">",1)[1].rsplit("</svg>",1)[0]}</g></svg>'''
-banner = f'''<div style="width:240px;height:480px;background:var(--char);box-shadow:0 18px 30px rgba(0,0,0,.4);position:relative;overflow:hidden"><div style="position:absolute;inset:0">{art("beams",240,480,"#B8A95E",op=.4)}</div><div style="position:absolute;left:30px;right:30px;top:40px">{logo("A","logo","reverse")}</div><div style="position:absolute;left:24px;right:24px;bottom:70px;text-align:center;color:var(--cream);font-size:26px;font-weight:300">[اسم الفعالية]</div></div>'''
-def lab(t): return f'<div style="position:absolute;font-size:16px;background:var(--olive);color:#fff;padding:2px 12px;font-weight:500">{t}</div>'
-wall = "linear-gradient(180deg,#d9d2c1,#cfc6b2)"
-pages.append(f'''<div class="page" style="background:{wall}">{hdr(pg,"التطبيقات (1/2) — تصوّر")}
- <div style="position:absolute;left:120px;top:170px;display:flex;flex-direction:column;gap:30px">{cf}{cb}</div>
- <div style="position:absolute;left:640px;top:170px">{letter}</div>
- <div style="position:absolute;right:120px;top:170px;display:flex;flex-direction:column;gap:30px;align-items:flex-end">{envelope}{folder}</div>
- <div class="tag" style="left:120px;bottom:100px">تصوّر — بطاقة العمل</div><div class="tag" style="left:640px;bottom:100px">تصوّر — الورق الرسمي</div><div class="tag" style="right:120px;bottom:100px">تصوّر — المظروف والمجلد</div>{ftr(pg).replace("color:var(--deep)","")}</div>''')
-pg += 1
-pages.append(f'''<div class="page" style="background:{wall}">{hdr(pg,"التطبيقات (2/2) — تصوّر")}
- <div style="position:absolute;left:120px;top:180px">{fascia}</div>
- <div style="position:absolute;left:120px;top:520px;display:flex;gap:70px;align-items:flex-start">{polo}<div style="width:200px;height:290px;background:var(--cream);box-shadow:0 14px 24px rgba(0,0,0,.3);margin-top:20px;position:relative;padding:20px"><div style="width:120px">{logo("A","logo","color",tagline=False)}</div><div style="margin-top:90px;font-size:18px;font-weight:600">[الاسم]</div><div style="font-size:12px;color:var(--deep)">منظّم · فريق العمليات</div></div></div>
- <div style="position:absolute;right:300px;top:180px">{banner}</div>
- <div style="position:absolute;right:120px;top:210px;width:140px;writing-mode:vertical-rl"></div>
- <div class="tag" style="left:120px;top:150px;display:none"></div>
- <div class="tag" style="left:120px;bottom:100px">تصوّر — لوحة واجهة مضيئة</div><div class="tag" style="left:560px;bottom:100px">تصوّر — الزي والبطاقة</div><div class="tag" style="right:300px;bottom:100px">تصوّر — بنر فعاليات</div>{ftr(pg)}</div>''')
-pg += 1
+for D in 'ABC':
+    # ---- التطبيقات ----
+    def card():
+        front = f'<div style="width:420px;height:240px;background:var(--char);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 30px rgba(0,0,0,.35)"><div style="width:240px">{logo(D,"logo","reverse",tagline=False)}</div></div>'
+        back = f'''<div style="width:420px;height:240px;background:var(--cream);padding:28px 30px;box-shadow:0 18px 30px rgba(0,0,0,.25);position:relative"><div style="width:44px;position:absolute;left:28px;top:26px">{logo(D,"icon","color")}</div>
+         <div style="margin-top:96px;font-weight:600;font-size:21px">فهد سعد العجمي</div><div style="font-size:14px;color:var(--deep)">المؤسس ورئيس مجلس الإدارة</div>
+         <div class="ltr" style="font-family:Jost;font-size:13px;margin-top:12px;letter-spacing:.06em">0506221548 · fd-0@hotmail.com</div><div style="font-size:12px;color:var(--deep);margin-top:2px">الرياض، المملكة العربية السعودية</div></div>'''
+        return front, back
+    cf, cb = card()
+    letter = f'''<div style="width:340px;height:480px;background:#fff;box-shadow:0 18px 30px rgba(0,0,0,.28);padding:32px;position:relative"><div style="width:130px">{logo(D,"logo","color",tagline=False)}</div>
+      <div style="margin-top:60px">{"".join('<div style="height:7px;background:#ddd;margin:13px 0;width:%d%%"></div>'%w for w in (96,88,92,70,94,85,60))}</div>
+      <div style="position:absolute;left:32px;right:32px;bottom:26px;border-top:1px solid var(--olive);padding-top:8px;font-size:11px;color:var(--deep);display:flex;justify-content:space-between"><span>الرياض · المملكة العربية السعودية</span><span class="ltr" style="font-family:Jost">fd-0@hotmail.com</span></div></div>'''
+    envelope = f'''<div style="width:520px;height:250px;background:var(--cream);box-shadow:0 14px 26px rgba(0,0,0,.28);position:relative"><div style="width:50px;position:absolute;right:26px;top:22px">{logo(D,"icon","color")}</div>
+      <div style="position:absolute;left:34px;bottom:30px;font-size:13px;color:var(--deep);line-height:1.9">اسم المستلم<br>العنوان — الرياض</div><div style="position:absolute;left:0;right:0;top:0;height:95px;border-bottom:1px solid rgba(140,127,62,.5);clip-path:polygon(0 0,100% 0,50% 100%)"></div></div>'''
+    folder = f'''<div style="width:330px;height:440px;background:var(--char);box-shadow:0 18px 30px rgba(0,0,0,.4);position:relative;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:0;opacity:.8">{art("valley",330,440,"#B8A95E",op=.3)}</div><div style="width:200px;position:relative">{logo(D,"logo","reverse")}</div></div>'''
+    fascia = f'''<div style="width:760px;height:260px;background:linear-gradient(160deg,#8d8472,#6f6858);box-shadow:0 18px 34px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;position:relative"><div style="width:60%;padding:28px;background:var(--char);box-shadow:0 0 60px 8px rgba(184,169,94,.45)">{logo(D,"logo","reverse")}</div></div>'''
+    polo = f'''<svg viewBox="0 0 300 300" style="width:330px"><path d="M95 20 L55 38 L12 100 L52 122 L72 96 L72 280 H228 V96 L248 122 L288 100 L245 38 L205 20 Q150 62 95 20Z" fill="#1B1A18"/><path d="M120 22 L150 70 L180 22" fill="none" stroke="#2d2c29" stroke-width="3"/><g transform="translate(176 104) scale(.2)">{logos.get(D,"icon","reverse")[0].split(">",1)[1].rsplit("</svg>",1)[0]}</g></svg>'''
+    banner = f'''<div style="width:240px;height:480px;background:var(--char);box-shadow:0 18px 30px rgba(0,0,0,.4);position:relative;overflow:hidden"><div style="position:absolute;inset:0">{art("beams",240,480,"#B8A95E",op=.4)}</div><div style="position:absolute;left:30px;right:30px;top:40px">{logo(D,"logo","reverse")}</div><div style="position:absolute;left:24px;right:24px;bottom:70px;text-align:center;color:var(--cream);font-size:26px;font-weight:300">[اسم الفعالية]</div></div>'''
+    def lab(t): return f'<div style="position:absolute;font-size:16px;background:var(--olive);color:#fff;padding:2px 12px;font-weight:500">{t}</div>'
+    wall = "linear-gradient(180deg,#d9d2c1,#cfc6b2)"
+    pages.append(f'''<div class="page" style="background:{wall}">{hdr(pg,f"التطبيقات (1/2) — الاتجاه {INFO[D][0]} — تصوّر")}
+     <div style="position:absolute;left:120px;top:170px;display:flex;flex-direction:column;gap:30px">{cf}{cb}</div>
+     <div style="position:absolute;left:640px;top:170px">{letter}</div>
+     <div style="position:absolute;right:120px;top:170px;display:flex;flex-direction:column;gap:30px;align-items:flex-end">{envelope}{folder}</div>
+     <div class="tag" style="left:120px;bottom:100px">تصوّر — بطاقة العمل</div><div class="tag" style="left:640px;bottom:100px">تصوّر — الورق الرسمي</div><div class="tag" style="right:120px;bottom:100px">تصوّر — المظروف والمجلد</div>{ftr(pg).replace("color:var(--deep)","")}</div>''')
+    pg += 1
+    pages.append(f'''<div class="page" style="background:{wall}">{hdr(pg,f"التطبيقات (2/2) — الاتجاه {INFO[D][0]} — تصوّر")}
+     <div style="position:absolute;left:120px;top:180px">{fascia}</div>
+     <div style="position:absolute;left:120px;top:520px;display:flex;gap:70px;align-items:flex-start">{polo}<div style="width:200px;height:290px;background:var(--cream);box-shadow:0 14px 24px rgba(0,0,0,.3);margin-top:20px;position:relative;padding:20px"><div style="width:120px">{logo(D,"logo","color",tagline=False)}</div><div style="margin-top:90px;font-size:18px;font-weight:600">[الاسم]</div><div style="font-size:12px;color:var(--deep)">منظّم · فريق العمليات</div></div></div>
+     <div style="position:absolute;right:300px;top:180px">{banner}</div>
+     <div style="position:absolute;right:120px;top:210px;width:140px;writing-mode:vertical-rl"></div>
+     <div class="tag" style="left:120px;top:150px;display:none"></div>
+     <div class="tag" style="left:120px;bottom:100px">تصوّر — لوحة واجهة مضيئة</div><div class="tag" style="left:560px;bottom:100px">تصوّر — الزي والبطاقة</div><div class="tag" style="right:300px;bottom:100px">تصوّر — بنر فعاليات</div>{ftr(pg)}</div>''')
+    pg += 1
+
 
 # ---- الخطوات التالية ----
 nx = [("اختيار الاتجاه","أ أو ب أو ج، واعتماده كتابيًا."),("فحص التسجيل","التحقق من توفر «Golden Vale / جولدن فيل» والشعار لدى الهيئة السعودية للملكية الفكرية قبل أي طباعة."),("الملفات النهائية","تسليم SVG وPDF وPNG بعد الاعتماد، وفحص القراءة على الأحجام الصغيرة."),("عينات الطباعة","مطابقة CMYK/Pantone مع المطبعة قبل الإنتاج الكامل."),("استبدال المحتوى المؤقت","إضافة السجل التجاري وصور المشاريع وشعارات العملاء الموثّقة.")]
