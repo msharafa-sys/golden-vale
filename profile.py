@@ -33,7 +33,7 @@ pages.append(f'''<div class="page">{hdr(2,"المحتويات",620)}
  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;background:var(--char)">{art("beams",560,1080,"#B8A95E",op=.35)}</div>{ftr(2,620)}</div>''')
 
 # 03 نظرة عامة
-facts = [("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("السجل التجاري","[رقم السجل التجاري — يُضاف]")]
+facts = [("الاسم النظامي","شركة جولدن فيل"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
 fx = "".join(f'<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(140,127,62,.4);padding:16px 0;font-size:23px"><span class="deepc" style="font-weight:500">{a}</span><span style="font-weight:300">{b}</span></div>' for a,b in facts)
 pages.append(f'''<div class="page">{hdr(3,"نظرة عامة")}
  <div style="position:absolute;right:120px;top:190px;width:980px"><div class="lat olive" style="font-size:18px;margin-bottom:22px">Overview</div>
@@ -120,8 +120,8 @@ pages.append(f'''<div class="page dark">{hdr(14,"العملاء والشركاء
  <div style="position:absolute;left:120px;right:120px;top:410px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px">{cl}</div>{ftr(14)}</div>''')
 
 # 14 التواصل
-ct = [("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">fd-0@hotmail.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("السجل التجاري","[رقم السجل التجاري — يُضاف]")]
-cr = "".join(f'<div style="border-top:1px solid rgba(140,127,62,.5);padding:20px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:34px;font-weight:400;margin-top:6px">{b}</div></div>' for a,b in ct)
+ct = [("الاسم النظامي","شركة جولدن فيل — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">fd-0@hotmail.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
+cr = "".join(f'<div style="border-top:1px solid rgba(140,127,62,.5);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a,b in ct)
 pages.append(f'''<div class="page cream">{hdr(15,"التواصل",780)}
  <div style="position:absolute;right:120px;top:180px;width:900px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Contact</div><h1 style="margin-bottom:40px">تواصل معنا</h1>{cr}</div>
  <div style="position:absolute;left:0;top:0;bottom:0;width:720px;background:var(--char);display:flex;align-items:center;justify-content:center">
