@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""عرض سعر جولدن فيل بالهوية (الاتجاه أ). الاستعمال: python3 quote.py [quote.json] ثم render."""
+"""عرض سعر Golden Vale بالهوية (الاتجاه أ). الاستعمال: python3 quote.py [quote.json] ثم render."""
 import sys, json, html as H
 from common import logo, P
 D = json.load(open(sys.argv[1] if len(sys.argv) > 1 else "quote.json", encoding="utf-8"))
@@ -76,7 +76,7 @@ body = f'''<div class="page">
  <div class="parties">
   <div class="box"><h3>مقدَّم إلى</h3><div class="nm">{E(cl["name"])}</div>
    <div>{CL}</div></div>
-  <div class="box"><h3>مقدَّم من</h3><div class="nm">شركة جولدن فيل</div>
+  <div class="box"><h3>مقدَّم من</h3><div class="nm">Golden Vale</div>
    <div>شركة ذات مسؤولية محدودة (شخص واحد)<br><b>الرقم الوطني الموحد:</b> {NUM("7055194109")}<br>{("<b>الرقم الضريبي:</b> " + NUM(D["vat_number"]) + "<br>") if D.get("vat_number") else ""}<b>الرياض،</b> المملكة العربية السعودية</div></div>
  </div>
  <table><thead><tr><th class="c" style="width:42px">#</th><th>البند والوصف</th><th class="c" style="width:70px">الوحدة</th><th class="c" style="width:58px">الكمية</th><th class="n" style="width:104px">سعر الوحدة</th><th class="n" style="width:110px">الإجمالي</th></tr></thead><tbody>{rows}</tbody></table>
@@ -85,8 +85,8 @@ body = f'''<div class="page">
   {('<div><span>الخصم</span><span class="num">'+money(disc)+'</span></div><div><span>الإجمالي قبل الضريبة</span><span class="num">'+T(net)+'</span></div>') if disc else ""}
   <div><span>ضريبة القيمة المضافة ({D.get("vat_rate",.15)*100:g}%)</span><span class="num">{T(vat)}</span></div>
   <div class="g"><span>الإجمالي (ر.س)</span><span class="num">{T(grand)}</span></div></div></div>
- <div class="sign"><div class="l">شركة جولدن فيل — فهد سعد العجمي<small>التوقيع / الختم</small></div><div class="l">اعتماد العميل<small>الاسم / التوقيع / الختم</small></div></div>
+ <div class="sign"><div class="l">Golden Vale<small>التوقيع / الختم</small></div><div class="l">اعتماد العميل<small>الاسم / التوقيع / الختم</small></div></div>
  <div class="foot"><span class="lat">Golden Vale</span><span>الرياض · <span class="ltr num">0506221548</span> · <span class="ltr" style="font-family:Jost">fd-0@hotmail.com</span></span></div>
 </div>'''
-open(OUT, "w", encoding="utf-8").write(f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>عرض سعر — جولدن فيل</title><style>{CSS}</style></head><body>{body}</body></html>')
+open(OUT, "w", encoding="utf-8").write(f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>عرض سعر — Golden Vale</title><style>{CSS}</style></head><body>{body}</body></html>')
 print("ok", "priced" if priced else "template")

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""مولّد شعارات جولدن فيل: ثلاثة اتجاهات × (ألوان / معكوس / أحادي) × (كامل / أيقونة)."""
+"""مولّد شعارات Golden Vale: اتجاهان (أ وب) × (ألوان / معكوس / أحادي) × (كامل / أيقونة)."""
 import os, uharfbuzz as hb
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
@@ -181,7 +181,7 @@ def get(direction, kind="logo", mode="color", pad=0, tagline=True):
 def write_all(outdir):
     os.makedirs(outdir, exist_ok=True)
     n = 0
-    for d in "ABC":
+    for d in "AB":
         for kind in ("logo", "icon"):
             for mode in MODES:
                 svg, _ = get(d, kind, mode)

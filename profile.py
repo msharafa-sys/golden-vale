@@ -27,19 +27,19 @@ pages.append(f'''<div class="page dark">
 
 # 02 المحتويات
 items = [("نظرة عامة","Overview",3),("كلمة رئيس مجلس الإدارة","Chairman's Message",4),("الرؤية والرسالة","Vision & Mission",5),("القيم الجوهرية","Core Values",6),
-         ("خدماتنا","Services",7),("منهجية العمل","How We Work",11),("لماذا جولدن فيل","Why Golden Vale",12),("العملاء والشركاء","Clients & Partners",13),("التواصل","Contact",14)]
+         ("خدماتنا","Services",7),("منهجية العمل","How We Work",11),("لماذا <bdi>Golden Vale</bdi>","Why Golden Vale",12),("العملاء والشركاء","Clients & Partners",13),("التواصل","Contact",14)]
 rows = "".join(f'<div style="display:flex;align-items:baseline;gap:28px;border-top:1px solid rgba(140,127,62,.4);padding:11px 0"><span class="num olive" style="font-size:30px;width:70px">{i+1:02d}</span><span style="font-size:29px;font-weight:400;flex:1">{a}</span><span class="lat" style="font-size:14px;color:var(--deep)">{b}</span><span class="num" style="font-size:24px;width:50px;text-align:left">{p:02d}</span></div>' for i,(a,b,p) in enumerate(items))
 pages.append(f'''<div class="page">{hdr(2,"المحتويات",620)}
  <div style="position:absolute;right:120px;top:150px;width:1000px"><h1>المحتويات</h1><div class="rule" style="margin:18px 0 14px"></div>{rows}</div>
  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;background:var(--char)">{art("beams",560,1080,"#B8A95E",op=.35)}</div>{ftr(2,620)}</div>''')
 
 # 03 نظرة عامة
-facts = [("الاسم النظامي","شركة جولدن فيل"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
+facts = [("الاسم التجاري","Golden Vale"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
 fx = "".join(f'<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(140,127,62,.4);padding:16px 0;font-size:23px"><span class="deepc" style="font-weight:500">{a}</span><span style="font-weight:300">{b}</span></div>' for a,b in facts)
 pages.append(f'''<div class="page">{hdr(3,"نظرة عامة")}
  <div style="position:absolute;right:120px;top:190px;width:980px"><div class="lat olive" style="font-size:18px;margin-bottom:22px">Overview</div>
   <h1>وكالة سعودية للدعاية والإعلان وتنظيم الفعاليات</h1><div class="rule" style="margin:34px 0"></div>
-  <p>تأسست جولدن فيل عام 2026 في الرياض لتقدّم للعلامات التجارية والجهات حلولًا متكاملة في الدعاية والإعلان وتنظيم الفعاليات وإدارة الهوية البصرية وتصميم التجارب الإبداعية، عبر نقطة اتصال واحدة من الفكرة حتى التسليم.</p>
+  <p>تأسست <bdi>Golden Vale</bdi> عام 2026 في الرياض لتقدّم للعلامات التجارية والجهات حلولًا متكاملة في الدعاية والإعلان وتنظيم الفعاليات وإدارة الهوية البصرية وتصميم التجارب الإبداعية، عبر نقطة اتصال واحدة من الفكرة حتى التسليم.</p>
   <p style="margin-top:14px" class="small deepc">{PH_NOTE} نموذج التنفيذ (فريق داخلي، أو شركاء إنتاج معتمدون، أو كلاهما) يُحدَّد قبل الاعتماد النهائي.</p></div>
  <div style="position:absolute;left:120px;top:210px;width:560px;background:var(--cream);padding:34px 40px">{fx}</div>
  <div class="ph" style="position:absolute;left:120px;top:700px;width:560px;height:250px">[صورة — تُضاف لاحقًا]</div>{ftr(3)}</div>''')
@@ -51,7 +51,7 @@ pages.append(f'''<div class="page cream">
   <div class="lat olive" style="font-size:18px;margin-bottom:34px">Chairman's Message</div>
   <div class="rule" style="width:90px"></div>
   <h2 style="font-weight:400;font-size:52px;line-height:1.55;margin-top:40px">نؤمن أن لكل علامة حضورًا يستحق أن يُصنع بعناية، وأن الفعالية الناجحة تبدأ بفكرة واضحة وتنتهي بتسليم منضبط.</h2>
-  <p style="margin-top:36px;font-size:25px">تنطلق جولدن فيل في مرحلة يشهد فيها قطاع الفعاليات والترفيه في المملكة نموًا متسارعًا ضمن مستهدفات رؤية 2030. ونلتزم بأن نكون شريكًا يُعتمد عليه في الجودة والمواعيد والشفافية، وببناء كل علاقة مع عملائنا على الثقة والنتائج.</p>
+  <p style="margin-top:36px;font-size:25px">تنطلق <bdi>Golden Vale</bdi> في مرحلة يشهد فيها قطاع الفعاليات والترفيه في المملكة نموًا متسارعًا ضمن مستهدفات رؤية 2030. ونلتزم بأن نكون شريكًا يُعتمد عليه في الجودة والمواعيد والشفافية، وببناء كل علاقة مع عملائنا على الثقة والنتائج.</p>
   <div style="border-top:1px solid rgba(140,127,62,.5);margin-top:44px;padding-top:26px"><h3>فهد سعد العجمي</h3><div class="deepc" style="font-size:22px;margin-top:4px">المؤسس ورئيس مجلس الإدارة</div>
   <div class="small deepc" style="margin-top:14px;opacity:.85">{PH_NOTE} مسودة للمراجعة والاعتماد من الأستاذ فهد سعد العجمي قبل النشر.</div></div></div></div>''')
 
@@ -98,8 +98,8 @@ pages.append(f'''<div class="page">{hdr(11,"منهجية العمل")}
 # 12 لماذا
 why = [("نقطة اتصال واحدة","تصميم وإنتاج وتشغيل تحت إدارة واحدة."),("فكرة أصيلة","مفاهيم مستوحاة من هوية العلامة والمكان."),("التزام بالمواعيد","جداول معتمدة ومتابعة مستمرة."),("شفافية التسعير","عروض أسعار مفصلة ونطاق عمل واضح."),("جودة التنفيذ","خامات ومعايير إنتاج محددة سلفًا."),("دعم مستمر","متابعة قبل الفعالية وخلالها وبعدها.")]
 wc = "".join(f'<div style="background:#fff;border-top:3px solid var(--olive);padding:34px 34px;height:285px"><div class="num olive" style="font-size:30px">{i+1:02d}</div><h3 style="margin:30px 0 10px;font-size:34px">{a}</h3><p style="font-size:22px;line-height:1.7">{b}</p></div>' for i,(a,b) in enumerate(why))
-pages.append(f'''<div class="page cream">{hdr(12,"لماذا جولدن فيل")}
- <div style="position:absolute;right:120px;top:170px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Why Golden Vale</div><h1>لماذا جولدن فيل</h1></div>
+pages.append(f'''<div class="page cream">{hdr(12,"لماذا <bdi>Golden Vale</bdi>")}
+ <div style="position:absolute;right:120px;top:170px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Why Golden Vale</div><h1>لماذا <bdi>Golden Vale</bdi></h1></div>
  <div style="position:absolute;left:120px;right:120px;top:400px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px">{wc}</div>{ftr(12)}</div>''')
 
 # 13 العملاء
@@ -110,7 +110,7 @@ pages.append(f'''<div class="page dark">{hdr(13,"العملاء والشركاء
  <div style="position:absolute;left:120px;right:120px;top:410px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px">{cl}</div>{ftr(13)}</div>''')
 
 # 14 التواصل
-ct = [("الاسم النظامي","شركة جولدن فيل — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">fd-0@hotmail.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
+ct = [("الاسم التجاري","Golden Vale — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">fd-0@hotmail.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
 cr = "".join(f'<div style="border-top:1px solid rgba(140,127,62,.5);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a,b in ct)
 pages.append(f'''<div class="page cream">{hdr(14,"التواصل",780)}
  <div style="position:absolute;right:120px;top:180px;width:900px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Contact</div><h1 style="margin-bottom:40px">تواصل معنا</h1>{cr}</div>
@@ -118,7 +118,7 @@ pages.append(f'''<div class="page cream">{hdr(14,"التواصل",780)}
    <div style="position:absolute;inset:0">{art("valley",720,1080,"#B8A95E",op=.18)}</div>
    <div style="width:{CONTACT_W}px;position:relative">{logo(D,"logo","paper")}</div></div></div>''')
 
-H = html("جولدن فيل — الملف التعريفي", pages)
+H = html("Golden Vale — الملف التعريفي", pages)
 H = H.replace("border-bottom:1px solid rgba(140,127,62,.45)", "border-bottom:none")
 H = H.replace("rgba(140,127,62,", "rgba(27,26,24,").replace("rgba(184,169,94,", "rgba(237,230,216,")
 H = re.sub(r"rgba\(27,26,24,\.\d+\)", "rgba(27,26,24,.13)", H)

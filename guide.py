@@ -41,7 +41,7 @@ INFO = {
        "المثلث الحالي نفسه بعد تحويله إلى خطوط رفيعة وتقسيم داخلي، مع مثلث واحد مصمت بالزيتوني كنقطة ارتكاز. يحفظ رصيد العلامة القائمة ولا يقطع معها.",
        "مناسب إن كانت هناك مطبوعات أو لوحات منفذة بالهوية القديمة.",26),
  "C": ("ج","العربية أولًا","Arabic First","للجهات الحكومية والرسمية",
-       "الاسم العربي «جولدن فيل» هو البطل، بخط IBM Plex Sans Arabic خفيف، والاسم اللاتيني بحروف هندسية متباعدة تحته. الأيقونة دائرة رفيعة بداخلها الوادي والأفق، تصلح كختم.",
+       "الاسم العربي «Golden Vale» هو البطل، بخط IBM Plex Sans Arabic خفيف، والاسم اللاتيني بحروف هندسية متباعدة تحته. الأيقونة دائرة رفيعة بداخلها الوادي والأفق، تصلح كختم.",
        "الأنسب للمخاطبات الرسمية والعروض الحكومية، والأقل تميزًا لاتينيًا.",40)}
 
 def clear_space(d):
@@ -64,7 +64,7 @@ def tile(d, kind, mode, bg, label, w="100%", fg="var(--char)"):
             f'<span style="position:absolute;bottom:12px;right:16px;font-size:15px;color:{fg};opacity:.8">{label}</span></div>')
 
 pg = 3
-for d in "ABC":
+for d in "AB":
     L, nm, en, badge, concept, why, px = INFO[d]
     # صفحة المفهوم
     pages.append(f'''<div class="page {"dark" if d=="B" and False else ""}">{hdr(pg,f"الاتجاه {L} — {nm}")}
@@ -105,7 +105,7 @@ pg += 1
 
 # ---- الخطوط ----
 scale = [("Display","عرض","96 / 120","ExtraLight 200"),("H1","عنوان رئيسي","64 / 80","Medium 500"),("H2","عنوان فرعي","40 / 56","Medium 500"),("Body","نص","24 / 46","Light 300"),("Caption","تعليق","16 / 26","Regular 400")]
-sr = "".join(f'<div style="display:flex;align-items:baseline;gap:30px;border-top:1px solid rgba(140,127,62,.4);padding:7px 0"><span class="lat" style="width:150px;font-size:14px">{a}</span><span style="flex:1;font-size:{[64,50,38,27,20][i]}px;font-weight:{[200,500,500,300,400][i]}">{b} — جولدن فيل</span><span class="ltr" style="font-family:Jost;font-size:17px;color:var(--deep)">{c} px · {d}</span></div>' for i,(a,b,c,d) in enumerate(scale))
+sr = "".join(f'<div style="display:flex;align-items:baseline;gap:30px;border-top:1px solid rgba(140,127,62,.4);padding:7px 0"><span class="lat" style="width:150px;font-size:14px">{a}</span><span style="flex:1;font-size:{[64,50,38,27,20][i]}px;font-weight:{[200,500,500,300,400][i]}">{b} — Golden Vale</span><span class="ltr" style="font-family:Jost;font-size:17px;color:var(--deep)">{c} px · {d}</span></div>' for i,(a,b,c,d) in enumerate(scale))
 pages.append(f'''<div class="page">{hdr(pg,"الخطوط")}
  <div style="position:absolute;right:120px;top:160px;width:1000px"><h1 style="font-size:56px;margin-bottom:20px">الخطوط</h1>
   <div style="display:flex;gap:30px;margin-bottom:22px">
@@ -140,7 +140,7 @@ pages.append(f'''<div class="page">{hdr(pg,"الاستخدام الصحيح وا
  <div style="position:absolute;left:120px;right:120px;top:460px;height:490px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:12px">{"".join(b1)}</div>{ftr(pg)}</div>''')
 pg += 1
 
-for D in 'ABC':
+for D in 'AB':
     # ---- التطبيقات ----
     def card():
         front = f'<div style="width:420px;height:240px;background:var(--char);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 30px rgba(0,0,0,.35)"><div style="width:240px">{logo(D,"logo","reverse",tagline=False)}</div></div>'
@@ -177,9 +177,9 @@ for D in 'ABC':
 
 
 # ---- الخطوات التالية ----
-nx = [("اختيار الاتجاه","أ أو ب أو ج، واعتماده كتابيًا."),("فحص التسجيل","التحقق من توفر «Golden Vale / جولدن فيل» والشعار لدى الهيئة السعودية للملكية الفكرية قبل أي طباعة."),("الملفات النهائية","تسليم SVG وPDF وPNG بعد الاعتماد، وفحص القراءة على الأحجام الصغيرة."),("عينات الطباعة","مطابقة CMYK/Pantone مع المطبعة قبل الإنتاج الكامل."),("استبدال المحتوى المؤقت","إضافة السجل التجاري وصور المشاريع وشعارات العملاء الموثّقة.")]
+nx = [("اختيار الاتجاه","أ أو ب، واعتماده كتابيًا."),("فحص التسجيل","التحقق من توفر «Golden Vale» والشعار لدى الهيئة السعودية للملكية الفكرية قبل أي طباعة."),("الملفات النهائية","تسليم SVG وPDF وPNG بعد الاعتماد، وفحص القراءة على الأحجام الصغيرة."),("عينات الطباعة","مطابقة CMYK/Pantone مع المطبعة قبل الإنتاج الكامل."),("استبدال المحتوى المؤقت","إضافة السجل التجاري وصور المشاريع وشعارات العملاء الموثّقة.")]
 nr = "".join(f'<div style="display:flex;gap:34px;align-items:baseline;border-top:1px solid rgba(140,127,62,.4);padding:22px 0"><span class="num olive" style="font-size:44px;width:80px">{i+1:02d}</span><div><h3 style="font-size:32px">{a}</h3><p class="small" style="font-size:22px;line-height:1.7">{b}</p></div></div>' for i,(a,b) in enumerate(nx))
 pages.append(f'''<div class="page cream">{hdr(pg,"الخطوات التالية")}<div style="position:absolute;right:120px;top:170px;width:1250px"><h1 style="font-size:60px;margin-bottom:24px">الخطوات التالية</h1>{nr}</div>{ftr(pg)}</div>''')
 
-open("build/guide.html","w",encoding="utf-8").write(html("جولدن فيل — دليل الهوية البصرية", pages))
+open("build/guide.html","w",encoding="utf-8").write(html("Golden Vale — دليل الهوية البصرية", pages))
 print(len(pages), "pages")
