@@ -1,6 +1,7 @@
 # Golden Vale — الهوية البصرية والملف التعريفي وعروض الأسعار
 
-- `Golden-Vale_Company-Profile.pdf` — الملف التعريفي (الاتجاه أ)، 14 صفحة 16:9
+- `Golden-Vale_Company-Profile_25-pages.pdf` — الملف التعريفي الموسّع (25 صفحة) — `profile25.py`، وأمر إعادة إنشائه في `PROMPT_company-profile-25.md`
+- `Golden-Vale_Company-Profile.pdf` — النسخة المختصرة (14 صفحة)
 - `Golden-Vale_Brand-Guidelines.pdf` — دليل الهوية (الاتجاهان أ وب)
 - `Golden-Vale_Quotation_GV-2026-0105.pdf` — عرض السعر، و`Golden-Vale_Quotation-Template.pdf` قالب فارغ
 - `logos/` — شعارات SVG (اتجاهان × شعار/أيقونة × ملوّن/معكوس/أسود/أبيض)
