@@ -36,15 +36,15 @@ CSS = """
 html,body{background:#777;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{font-family:'Plex','Jost',sans-serif;color:var(--char);font-size:14px}
 .page{width:794px;height:1123px;background:#fff;position:relative;overflow:hidden;padding:52px 56px}
-.top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--olive);padding-bottom:22px}
-.title{text-align:left}.title h1{font-size:38px;font-weight:600;line-height:1.2}
+.top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #ddd5c3;padding-bottom:22px}
+.title{text-align:right}.title h1{font-size:38px;font-weight:600;line-height:1.2}
 .title .lat{font-family:Jost;font-weight:300;letter-spacing:.32em;font-size:12px;color:var(--olive);text-transform:uppercase}
-.meta{display:grid;grid-template-columns:auto auto;gap:4px 16px;margin-top:12px;font-size:13px;color:var(--deep);justify-content:end}
+.meta{display:grid;grid-template-columns:auto auto;gap:4px 16px;margin-top:12px;font-size:13px;color:var(--deep);justify-content:start}
 .meta b{font-weight:500;color:var(--char)}
 .num{font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.02em}
 .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
 .parties{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
-.box{background:var(--paper);padding:16px 18px;border-top:3px solid var(--olive)}
+.box{background:var(--paper);padding:16px 18px}
 .box h3{font-size:12px;font-weight:600;color:var(--deep);letter-spacing:.04em;margin-bottom:8px}
 .box .nm{font-size:16px;font-weight:600;margin-bottom:6px}
 .box div{font-size:12.5px;line-height:1.85;font-weight:300}
@@ -55,7 +55,7 @@ th.c,td.c{text-align:center}th.n,td.n{text-align:left}
 td{padding:11px 10px;border-bottom:1px solid #ddd5c3;font-size:13px;font-weight:300}
 tr:nth-child(even) td{background:#fbf9f4}
 .row{display:flex;gap:26px;align-items:flex-start;margin-top:22px}
-.totals{width:300px;flex:none;border-top:2px solid var(--olive)}
+.totals{width:300px;flex:none}
 .totals div{display:flex;justify-content:space-between;padding:8px 10px;font-size:13.5px;border-bottom:1px solid #e6dfcd}
 .totals .g{background:var(--char);color:var(--cream);font-weight:600;font-size:16px;border:none;padding:11px 10px}
 .terms{flex:1}.terms h3{font-size:14px;font-weight:600;margin-bottom:6px;color:var(--deep)}
@@ -69,9 +69,10 @@ tr:nth-child(even) td{background:#fbf9f4}
 td b{font-weight:600;font-size:13.5px}.ln{font-size:11.5px;line-height:1.75;color:var(--deep);font-weight:300;margin-top:3px}
 """
 body = f'''<div class="page">
- <div class="top"><div style="width:215px">{logo("A","logo","color",tagline=True)}</div>
+ <div class="top">
   <div class="title"><div class="lat">Quotation</div><h1>عرض سعر</h1>
-   <div class="meta"><b>رقم العرض</b><span>{NUM(D["number"])}</span><b>التاريخ</b><span>{E(D["date"])}</span><b>سريان العرض</b><span>{E(D["valid_days"])} يومًا من تاريخه</span></div></div></div>
+   <div class="meta"><b>رقم العرض</b><span>{NUM(D["number"])}</span><b>التاريخ</b><span>{E(D["date"])}</span><b>سريان العرض</b><span>{E(D["valid_days"])} يومًا من تاريخه</span></div></div>
+  <div style="width:215px">{logo("A","logo","ink",tagline=True)}</div></div>
  <div class="parties">
   <div class="box"><h3>مقدَّم إلى</h3><div class="nm">{E(cl["name"])}</div>
    <div>{CL}</div></div>

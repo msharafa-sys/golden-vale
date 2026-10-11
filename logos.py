@@ -166,6 +166,8 @@ MODES = {
     "reverse": (PAL["cream"], PAL["olive_light"]),
     "mono":    ("#000000",    "#000000"),
     "white":   ("#FFFFFF",    "#FFFFFF"),
+    "ink":     (PAL["char"],  PAL["char"]),
+    "paper":   (PAL["cream"], PAL["cream"]),
 }
 
 def get(direction, kind="logo", mode="color", pad=0, tagline=True):
