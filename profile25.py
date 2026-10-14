@@ -145,7 +145,7 @@ add(lambda n: hdr(n,"طرق التعاون") + title("Engagement Models","كيف
 
 # 19 معرض الصور
 def gallery(n):
-    tiles = [("svc-events","مسرح وإضاءة"),("svc-ads","واجهة"),("svc-brand","صالة استقبال"),("svc-exp","منصة عرض"),("overview","قاعة فعاليات"),("method","قاعة مؤتمر")]
+    tiles = [("svc-events","مسرح وإضاءة"),("svc-ads","شاشة إعلانية"),("svc-brand","واجهة محل"),("svc-exp","جدار تفاعلي"),("gal-lounge","صالة استقبال"),("gal-build","تجهيز مسرح")]
     out = ""
     for i, (img, cap) in enumerate(tiles):
         x = 120 + (i % 3) * (544 + 24); y = 330 + (i // 3) * (300 + 24)
