@@ -4,7 +4,7 @@
 import json, os
 from common import logo, P
 BUILD = "build"
-PHONE, MAIL, CR = "0506221548", "fd-0@hotmail.com", "7055194109"
+PHONE, MAIL, CR = "0506221548", "info@goldenvale.com", "7055194109"
 ADDR = "الرياض، المملكة العربية السعودية"
 N = lambda s: f'<span class="ltr">{s}</span>'
 

@@ -86,7 +86,7 @@ body = f'''<div class="page">
   <div><span>ضريبة القيمة المضافة ({D.get("vat_rate",.15)*100:g}%)</span><span class="num">{T(vat)}</span></div>
   <div class="g"><span>الإجمالي (ر.س)</span><span class="num">{T(grand)}</span></div></div></div>
  <div class="sign"><div class="l">Golden Vale<small>التوقيع / الختم</small></div><div class="l">اعتماد العميل<small>الاسم / التوقيع / الختم</small></div></div>
- <div class="foot"><span class="lat">Golden Vale</span><span>الرياض · <span class="ltr num">0506221548</span> · <span class="ltr" style="font-family:Jost">fd-0@hotmail.com</span></span></div>
+ <div class="foot"><span class="lat">Golden Vale</span><span>الرياض · <span class="ltr num">0506221548</span> · <span class="ltr" style="font-family:Jost">info@goldenvale.com</span></span></div>
 </div>'''
 open(OUT, "w", encoding="utf-8").write(f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>عرض سعر — Golden Vale</title><style>{CSS}</style></head><body>{body}</body></html>')
 print("ok", "priced" if priced else "template")

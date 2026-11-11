@@ -117,7 +117,7 @@ pages.append(f'''<div class="page dark">{hdr(13,"العملاء والشركاء
  <div style="position:absolute;left:120px;right:120px;top:410px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px">{cl}</div>{ftr(13)}</div>''')
 
 # 14 التواصل
-ct = [("الاسم التجاري","Golden Vale — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">fd-0@hotmail.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
+ct = [("الاسم التجاري","Golden Vale — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">info@goldenvale.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
 cr = "".join(f'<div style="border-top:1px solid rgba(140,127,62,.5);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a,b in ct)
 pages.append(f'''<div class="page cream">{hdr(14,"التواصل",780)}
  <div style="position:absolute;right:120px;top:180px;width:900px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Contact</div><h1 style="margin-bottom:40px">تواصل معنا</h1>{cr}</div>
