@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 build/Jost-*.ttf
+
+# generated delivery bundles
+*.zip
