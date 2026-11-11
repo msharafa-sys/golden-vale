@@ -11,7 +11,7 @@ PH_NOTE = "[نص مؤقت]"
 CUT = 52
 def photo(name, x, y, w, h, tag=True, anchor="left"):
     clip = f"polygon(0 0,{w-CUT}px 0,{w}px {CUT}px,{w}px {h}px,0 {h}px)"
-    t = '<span style="position:absolute;left:0;bottom:0;background:rgba(27,26,24,.72);color:#EDE6D8;font-size:13px;padding:4px 14px;font-weight:400">صورة توضيحية</span>' if tag else ""
+    t = '<span style="position:absolute;left:0;bottom:0;background:rgba(20,33,61,.72);color:#F7F4EC;font-size:13px;padding:4px 14px;font-weight:400">صورة توضيحية</span>' if tag else ""
     return (f'<div style="position:absolute;{anchor}:{x}px;top:{y}px;width:{w}px;height:{h}px;clip-path:{clip};overflow:hidden;background:var(--char)">'
             f'<img src="../images/{name}.jpg" style="width:100%;height:100%;object-fit:cover;display:block">{t}</div>')
 
@@ -24,7 +24,7 @@ pages = []
 
 # 01 غلاف
 pages.append(f'''<div class="page dark">
- <div style="position:absolute;inset:0">{art("valley",1920,1080,"#B8A95E",op=.16)}</div>
+ <div style="position:absolute;inset:0">{art("valley",1920,1080,"#D4A94E",op=.16)}</div>
  <div style="position:absolute;left:0;right:0;top:{COVER[1]}px;display:flex;justify-content:center"><div style="width:{COVER[0]}px">{logo(D,"logo","paper")}</div></div>
  <div style="position:absolute;left:0;right:0;top:760px;text-align:center">
    <div class="rule" style="margin:0 auto 34px"></div>
@@ -35,14 +35,14 @@ pages.append(f'''<div class="page dark">
 # 02 المحتويات
 items = [("نظرة عامة","Overview",3),("كلمة رئيس مجلس الإدارة","Chairman's Message",4),("الرؤية والرسالة","Vision & Mission",5),("القيم الجوهرية","Core Values",6),
          ("خدماتنا","Services",7),("منهجية العمل","How We Work",11),("لماذا <bdi>Golden Vale</bdi>","Why Golden Vale",12),("العملاء والشركاء","Clients & Partners",13),("التواصل","Contact",14)]
-rows = "".join(f'<div style="display:flex;align-items:baseline;gap:28px;border-top:1px solid rgba(140,127,62,.4);padding:11px 0"><span class="num olive" style="font-size:30px;width:70px">{i+1:02d}</span><span style="font-size:29px;font-weight:400;flex:1">{a}</span><span class="lat" style="font-size:14px;color:var(--deep)">{b}</span><span class="num" style="font-size:24px;width:50px;text-align:left">{p:02d}</span></div>' for i,(a,b,p) in enumerate(items))
+rows = "".join(f'<div style="display:flex;align-items:baseline;gap:28px;border-top:1px solid rgba(122,95,30,.4);padding:11px 0"><span class="num olive" style="font-size:30px;width:70px">{i+1:02d}</span><span style="font-size:29px;font-weight:400;flex:1">{a}</span><span class="lat" style="font-size:14px;color:var(--deep)">{b}</span><span class="num" style="font-size:24px;width:50px;text-align:left">{p:02d}</span></div>' for i,(a,b,p) in enumerate(items))
 pages.append(f'''<div class="page">{hdr(2,"المحتويات",620)}
  <div style="position:absolute;right:120px;top:150px;width:1000px"><h1>المحتويات</h1><div class="rule" style="margin:18px 0 14px"></div>{rows}</div>
- <div style="position:absolute;left:0;top:0;bottom:0;width:560px;background:var(--char)">{art("beams",560,1080,"#B8A95E",op=.35)}</div>{ftr(2,620)}</div>''')
+ <div style="position:absolute;left:0;top:0;bottom:0;width:560px;background:var(--char)">{art("beams",560,1080,"#D4A94E",op=.35)}</div>{ftr(2,620)}</div>''')
 
 # 03 نظرة عامة
-facts = [("الاسم التجاري","Golden Vale"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
-fx = "".join(f'<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(140,127,62,.4);padding:16px 0;font-size:23px"><span class="deepc" style="font-weight:500">{a}</span><span style="font-weight:300">{b}</span></div>' for a,b in facts)
+facts = [("الاسم التجاري","Golden Vale"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:BSD;font-weight:500;letter-spacing:.04em">7055194109</span>')]
+fx = "".join(f'<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(122,95,30,.4);padding:16px 0;font-size:23px"><span class="deepc" style="font-weight:500">{a}</span><span style="font-weight:300">{b}</span></div>' for a,b in facts)
 pages.append(f'''<div class="page">{hdr(3,"نظرة عامة")}
  <div style="position:absolute;right:120px;top:190px;width:980px"><div class="lat olive" style="font-size:18px;margin-bottom:22px">Overview</div>
   <h1>وكالة سعودية للدعاية والإعلان وتنظيم الفعاليات</h1><div class="rule" style="margin:34px 0"></div>
@@ -53,21 +53,21 @@ pages.append(f'''<div class="page">{hdr(3,"نظرة عامة")}
 
 # 04 كلمة رئيس مجلس الإدارة
 pages.append(f'''<div class="page cream">
- <div class="ph" style="position:absolute;left:0;top:0;bottom:0;width:640px;border:none;border-right:2px dashed rgba(140,127,62,.7);background:var(--stone)">[صورة رئيس مجلس الإدارة — تُضاف لاحقًا]</div>
+ <div class="ph" style="position:absolute;left:0;top:0;bottom:0;width:640px;border:none;border-right:2px dashed rgba(122,95,30,.7);background:var(--stone)">[صورة رئيس مجلس الإدارة — تُضاف لاحقًا]</div>
  <div style="position:absolute;right:120px;top:130px;width:1000px">
   <div class="lat olive" style="font-size:18px;margin-bottom:34px">Chairman's Message</div>
   <div class="rule" style="width:90px"></div>
   <h2 style="font-weight:400;font-size:52px;line-height:1.55;margin-top:40px">نؤمن أن لكل علامة حضورًا يستحق أن يُصنع بعناية، وأن الفعالية الناجحة تبدأ بفكرة واضحة وتنتهي بتسليم منضبط.</h2>
   <p style="margin-top:36px;font-size:25px">تنطلق <bdi>Golden Vale</bdi> في مرحلة يشهد فيها قطاع الفعاليات والترفيه في المملكة نموًا متسارعًا ضمن مستهدفات رؤية 2030. ونلتزم بأن نكون شريكًا يُعتمد عليه في الجودة والمواعيد والشفافية، وببناء كل علاقة مع عملائنا على الثقة والنتائج.</p>
-  <div style="border-top:1px solid rgba(140,127,62,.5);margin-top:44px;padding-top:26px"><h3>فهد سعد العجمي</h3><div class="deepc" style="font-size:22px;margin-top:4px">المؤسس ورئيس مجلس الإدارة</div>
+  <div style="border-top:1px solid rgba(122,95,30,.5);margin-top:44px;padding-top:26px"><h3>فهد سعد العجمي</h3><div class="deepc" style="font-size:22px;margin-top:4px">المؤسس ورئيس مجلس الإدارة</div>
   <div class="small deepc" style="margin-top:14px;opacity:.85">{PH_NOTE} مسودة للمراجعة والاعتماد من الأستاذ فهد سعد العجمي قبل النشر.</div></div></div></div>''')
 
 # 05 الرؤية والرسالة
 pages.append(f'''<div class="page dark">{hdr(5,"الرؤية والرسالة")}
- <div style="position:absolute;inset:0;opacity:.7">{art("beams",1920,1080,"#B8A95E",op=.12)}</div>
+ <div style="position:absolute;inset:0;opacity:.7">{art("beams",1920,1080,"#D4A94E",op=.12)}</div>
  <div style="position:absolute;right:120px;top:260px;width:720px"><div class="lat" style="color:var(--olive-l);font-size:18px">Vision</div><h1 style="margin:22px 0 30px;color:var(--cream)">رؤيتنا</h1><div class="rule"></div>
    <p style="margin-top:36px;font-size:32px;line-height:1.9">أن نكون الشريك الأول للعلامات والجهات في المملكة لصناعة حضور لا يُنسى.</p></div>
- <div style="position:absolute;left:50%;top:230px;bottom:200px;width:1px;background:rgba(184,169,94,.5)"></div>
+ <div style="position:absolute;left:50%;top:230px;bottom:200px;width:1px;background:rgba(212,169,78,.5)"></div>
  <div style="position:absolute;left:120px;top:260px;width:720px"><div class="lat" style="color:var(--olive-l);font-size:18px">Mission</div><h1 style="margin:22px 0 30px;color:var(--cream)">رسالتنا</h1><div class="rule"></div>
    <p style="margin-top:36px;font-size:32px;line-height:1.9">تحويل أهداف عملائنا إلى حملات وفعاليات متقنة، عبر منهجية واضحة تجمع الفكرة والتصميم والإنتاج والتشغيل.</p></div>{ftr(5)}</div>''')
 
@@ -86,7 +86,7 @@ svcs = [("01","Advertising","الدعاية والإعلان","حملات تبد
 IMGS = ["svc-ads","svc-events","svc-brand","svc-exp"]
 for k,(n,en,ar,desc,subs,kind,dk) in enumerate(svcs):
     pg = 7+k
-    boxes = "".join(f'<div style="border:1.5px solid {"rgba(237,230,216,.28)" if dk else "rgba(27,26,24,.18)"};padding:22px 26px;font-size:24px;font-weight:400;background:{"transparent" if dk else "var(--cream)"}">{s}</div>' for s in subs)
+    boxes = "".join(f'<div style="border:1.5px solid {"rgba(247,244,236,.28)" if dk else "rgba(20,33,61,.18)"};padding:22px 26px;font-size:24px;font-weight:400;background:{"transparent" if dk else "var(--cream)"}">{s}</div>' for s in subs)
     pages.append(f'''<div class="page {"dark" if dk else ""}">{hdr(pg,"خدماتنا")}
  {photo(IMGS[k], 120, 170, 880, 540)}
  <div style="position:absolute;left:120px;top:740px;width:880px;display:grid;grid-template-columns:1fr 1fr;gap:16px">{boxes}</div>
@@ -97,7 +97,7 @@ for k,(n,en,ar,desc,subs,kind,dk) in enumerate(svcs):
 
 # 11 منهجية العمل
 steps = [("الاستماع","نفهم هدفك وجمهورك وميزانيتك."),("التصور","نقدّم الفكرة والتصاميم وعرض السعر."),("التنفيذ","إنتاج وتشغيل بإشراف مباشر."),("المتابعة","قياس الأثر وتقرير ختامي.")]
-st = "".join(f'<div style="display:flex;align-items:center;gap:44px;border-top:1px solid rgba(140,127,62,.5);padding:24px 0"><span class="num olive" style="font-size:64px;width:130px">{i+1:02d}</span><div><h3 style="font-size:40px">{a}</h3><p class="small" style="font-size:24px;line-height:1.6">{b}</p></div></div>' for i,(a,b) in enumerate(steps))
+st = "".join(f'<div style="display:flex;align-items:center;gap:44px;border-top:1px solid rgba(122,95,30,.5);padding:24px 0"><span class="num olive" style="font-size:64px;width:130px">{i+1:02d}</span><div><h3 style="font-size:40px">{a}</h3><p class="small" style="font-size:24px;line-height:1.6">{b}</p></div></div>' for i,(a,b) in enumerate(steps))
 pages.append(f'''<div class="page">{hdr(11,"منهجية العمل")}
  <div style="position:absolute;right:120px;top:180px;width:1000px"><div class="lat olive" style="font-size:18px;margin-bottom:20px">How We Work</div><h1>آلية العمل</h1><div style="margin-top:34px">{st}</div></div>
  {photo("method",120,190,520,760)}{ftr(11)}</div>''')
@@ -117,19 +117,19 @@ pages.append(f'''<div class="page dark">{hdr(13,"العملاء والشركاء
  <div style="position:absolute;left:120px;right:120px;top:410px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px">{cl}</div>{ftr(13)}</div>''')
 
 # 14 التواصل
-ct = [("الاسم التجاري","Golden Vale — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">fd-0@hotmail.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
-cr = "".join(f'<div style="border-top:1px solid rgba(140,127,62,.5);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a,b in ct)
+ct = [("الاسم التجاري","Golden Vale — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:BSD;font-weight:500">info@goldenvale.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:BSD;font-weight:500;letter-spacing:.04em">7055194109</span>')]
+cr = "".join(f'<div style="border-top:1px solid rgba(122,95,30,.5);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a,b in ct)
 pages.append(f'''<div class="page cream">{hdr(14,"التواصل",780)}
  <div style="position:absolute;right:120px;top:180px;width:900px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Contact</div><h1 style="margin-bottom:40px">تواصل معنا</h1>{cr}</div>
  <div style="position:absolute;left:0;top:0;bottom:0;width:720px;background:var(--char);display:flex;align-items:center;justify-content:center">
-   <div style="position:absolute;inset:0">{art("valley",720,1080,"#B8A95E",op=.18)}</div>
+   <div style="position:absolute;inset:0">{art("valley",720,1080,"#D4A94E",op=.18)}</div>
    <div style="width:{CONTACT_W}px;position:relative">{logo(D,"logo","paper")}</div></div></div>''')
 
 H = html("Golden Vale — الملف التعريفي", pages)
-H = H.replace("border-bottom:1px solid rgba(140,127,62,.45)", "border-bottom:none")
-H = H.replace("rgba(140,127,62,", "rgba(27,26,24,").replace("rgba(184,169,94,", "rgba(237,230,216,")
-H = re.sub(r"rgba\(27,26,24,\.\d+\)", "rgba(27,26,24,.13)", H)
-H = re.sub(r"rgba\(237,230,216,\.\d+\)", "rgba(237,230,216,.2)", H)
+H = H.replace("border-bottom:1px solid rgba(122,95,30,.45)", "border-bottom:none")
+H = H.replace("rgba(122,95,30,", "rgba(20,33,61,").replace("rgba(212,169,78,", "rgba(247,244,236,")
+H = re.sub(r"rgba\(27,26,24,\.\d+\)", "rgba(20,33,61,.13)", H)
+H = re.sub(r"rgba\(237,230,216,\.\d+\)", "rgba(247,244,236,.2)", H)
 H = H.replace("border-top:3px solid var(--olive)", "border-top:none").replace(".rule{height:3px;width:120px;background:var(--olive)}", ".rule{display:none}")
 open(f"build/profile_{D}.html","w",encoding="utf-8").write(H)
 print(len(pages), "pages")

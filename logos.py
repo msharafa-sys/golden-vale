@@ -11,7 +11,7 @@ FONTS = os.path.join(HERE, "fonts")
 BUILD = os.path.join(HERE, "build")
 os.makedirs(BUILD, exist_ok=True)
 
-PAL = dict(olive="#8C7F3E", olive_light="#B8A95E", char="#1B1A18", cream="#EDE6D8", stone="#CFC6B2", deep="#4A4526")
+PAL = dict(olive="#7A5F1E", olive_light="#D4A94E", char="#14213D", cream="#F7F4EC", stone="#D9D3C3", deep="#1F3158")
 
 def _jost(w):
     p = os.path.join(BUILD, f"Jost-{w}.ttf")
@@ -159,15 +159,39 @@ def logo_C(c, a, tagline=True):
         bottom += 52
     return body, (0, -135, W, bottom + 135)
 
-DIRS = {"A": (logo_A, icon_A), "B": (logo_B, icon_B), "C": (logo_C, icon_C)}
-NAMES = {"A": "A-open-valley", "B": "B-triangle-heritage", "C": "C-arabic-first"}
+
+# ---------- الهوية الكحلية الحالية: مونوغرام GV في مربع + GOLDEN VALE (مطابق لـ Logo.jsx في الموقع) ----------
+BSD_B = os.path.join(FONTS, "BigShouldersDisplay-700.ttf")
+
+def _fit_word(text, size, target):
+    d0, w0 = text_path(BSD_B, text, size, 0)
+    n = len(text)
+    tr = (target - w0) / (n - 1) / size if n > 1 else 0
+    return text_path(BSD_B, text, size, tr)
+
+def icon_N(c, a):
+    gv, wv = text_path(BSD_B, "GV", 88, 2 / 88)
+    mid = f"gvk{abs(hash(a)) % 9999}"
+    body = (f'<defs><mask id="{mid}" maskUnits="userSpaceOnUse" x="0" y="0" width="160" height="160">'
+            f'<rect width="160" height="160" fill="#fff"/><path d="{gv}" fill="#000" transform="translate({80 - wv/2:.2f} 108)"/></mask></defs>'
+            f'<rect width="160" height="160" rx="34" fill="{a}" mask="url(#{mid})"/>')
+    return body, (0, 0, 160, 160)
+
+def logo_N(c, a, tagline=True):
+    ib, _ = icon_N(c, a)
+    d, w = _fit_word("GOLDEN VALE", 94, 440)
+    body = ib + f'<path d="{d}" fill="{c}" transform="translate(200 104)"/>'
+    return body, (0, 0, 640, 160)
+
+DIRS = {"A": (logo_N, icon_N), "B": (logo_B, icon_B), "C": (logo_C, icon_C)}
+NAMES = {"A": "GV-navy", "B": "B-triangle-heritage", "C": "C-arabic-first"}
 MODES = {
-    "color":   (PAL["char"],  PAL["olive"]),
+    "color":   (PAL["char"],  PAL["char"]),
     "reverse": (PAL["cream"], PAL["olive_light"]),
     "mono":    ("#000000",    "#000000"),
     "white":   ("#FFFFFF",    "#FFFFFF"),
     "ink":     (PAL["char"],  PAL["char"]),
-    "paper":   (PAL["cream"], PAL["cream"]),
+    "paper":   (PAL["cream"], PAL["olive_light"]),
 }
 
 def get(direction, kind="logo", mode="color", pad=0, tagline=True):
@@ -181,7 +205,7 @@ def get(direction, kind="logo", mode="color", pad=0, tagline=True):
 def write_all(outdir):
     os.makedirs(outdir, exist_ok=True)
     n = 0
-    for d in "AB":
+    for d in "A":
         for kind in ("logo", "icon"):
             for mode in MODES:
                 svg, _ = get(d, kind, mode)
