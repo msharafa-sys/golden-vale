@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re, logos
 P = logos.PAL
-P["paper"] = "#F6F2E9"
+P["paper"] = "#FBF9F3"
 
 def sv(svg, width=None, extra=""):
     s = re.sub(r'(<svg[^>]*?) width="[^"]*" height="[^"]*"', r'\1', svg, count=1)
@@ -12,7 +12,7 @@ def logo(d="A", kind="logo", mode="color", width="100%", pad=0, tagline=True, ex
     return sv(logos.get(d, kind, mode, pad, tagline)[0], width, extra)
 
 CSS = """
-@font-face{font-family:'Jost';src:url('../fonts/Jost.ttf');font-weight:100 900}
+@font-face{font-family:'BSD';src:url('../fonts/BigShouldersDisplay-500.ttf');font-weight:300 500}@font-face{font-family:'BSD';src:url('../fonts/BigShouldersDisplay-700.ttf');font-weight:600 800}@font-face{font-family:'Messiri';src:url('../fonts/ElMessiri-500.ttf');font-weight:400 500}@font-face{font-family:'Messiri';src:url('../fonts/ElMessiri-600.ttf');font-weight:600}@font-face{font-family:'Messiri';src:url('../fonts/ElMessiri-700.ttf');font-weight:700}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-ExtraLight.ttf');font-weight:200}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-Light.ttf');font-weight:300}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-Regular.ttf');font-weight:400}
@@ -20,20 +20,21 @@ CSS = """
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-SemiBold.ttf');font-weight:600}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-Bold.ttf');font-weight:700}
 @page{size:1920px 1080px;margin:0}
-:root{--olive:#8C7F3E;--olive-l:#B8A95E;--char:#1B1A18;--cream:#EDE6D8;--stone:#CFC6B2;--deep:#4A4526;--paper:#F6F2E9}
+:root{--olive:#7A5F1E;--olive-l:#D4A94E;--char:#14213D;--cream:#F7F4EC;--stone:#D9D3C3;--deep:#1F3158;--paper:#FBF9F3}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#777}
-body{font-family:'Plex','Jost',sans-serif;color:var(--char);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:'Plex','BSD',sans-serif;color:var(--char);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .page{width:1920px;height:1080px;position:relative;overflow:hidden;page-break-after:always;break-after:page;background:var(--paper)}
 .dark{background:var(--char);color:var(--cream)}
 .cream{background:var(--cream)}
-.lat{font-family:'Jost',sans-serif;letter-spacing:.32em;text-transform:uppercase;font-weight:300}
-.num{font-family:'Jost',sans-serif;font-weight:200;letter-spacing:.02em}
-.hdr{position:absolute;top:56px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(140,127,62,.45);padding-bottom:22px;font-size:22px;color:var(--deep)}
-.dark .hdr{color:var(--olive-l);border-color:rgba(184,169,94,.4)}
+.lat{font-family:BSD,sans-serif;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
+.num{font-family:BSD,sans-serif;font-weight:500;letter-spacing:.02em}
+.hdr{position:absolute;top:56px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(122,95,30,.45);padding-bottom:22px;font-size:22px;color:var(--deep)}
+.dark .hdr{color:var(--olive-l);border-color:rgba(212,169,78,.4)}
 .hdr .lat{font-size:17px;color:inherit}
 .ftr{position:absolute;bottom:44px;left:120px;right:120px;display:flex;justify-content:space-between;font-size:16px;color:var(--deep);opacity:.8}
 .dark .ftr{color:var(--olive-l)}
+h1,h2,h3{font-family:'Messiri','Plex',sans-serif}
 h1{font-weight:600;font-size:76px;line-height:1.25}
 h2{font-weight:600;font-size:56px;line-height:1.3}
 h3{font-weight:500;font-size:34px;line-height:1.4}
@@ -41,13 +42,13 @@ p{font-weight:300;font-size:27px;line-height:1.95}
 .small{font-size:20px}
 .olive{color:var(--olive)}.deepc{color:var(--deep)}
 .rule{height:3px;width:120px;background:var(--olive)}
-.ph{border:2px dashed rgba(140,127,62,.7);color:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;font-size:20px;font-weight:400;background:rgba(237,230,216,.5)}
-.dark .ph{color:var(--olive-l);background:rgba(255,255,255,.04);border-color:rgba(184,169,94,.6)}
+.ph{border:2px dashed rgba(122,95,30,.7);color:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;font-size:20px;font-weight:400;background:rgba(247,244,236,.5)}
+.dark .ph{color:var(--olive-l);background:rgba(255,255,255,.04);border-color:rgba(212,169,78,.6)}
 .tag{position:absolute;font-size:15px;background:var(--olive);color:#fff;padding:3px 12px;font-weight:500;letter-spacing:.04em}
 .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
 """
 
-def art(kind, w, h, fg="#B8A95E", bg="transparent", op=.5):
+def art(kind, w, h, fg="#D4A94E", bg="transparent", op=.5):
     """رسوم تجريدية بديلة عن الصور (لا صور مسروقة ولا ادعاءات)."""
     if kind == "valley":
         lines = ""

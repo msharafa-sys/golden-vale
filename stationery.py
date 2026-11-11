@@ -9,19 +9,19 @@ ADDR = "الرياض، المملكة العربية السعودية"
 N = lambda s: f'<span class="ltr">{s}</span>'
 
 BASE = """
-@font-face{font-family:'Jost';src:url('../fonts/Jost.ttf');font-weight:100 900}
+@font-face{font-family:'BSD';src:url('../fonts/BigShouldersDisplay-500.ttf');font-weight:300 500}@font-face{font-family:'BSD';src:url('../fonts/BigShouldersDisplay-700.ttf');font-weight:600 800}@font-face{font-family:'Messiri';src:url('../fonts/ElMessiri-500.ttf');font-weight:400 500}@font-face{font-family:'Messiri';src:url('../fonts/ElMessiri-600.ttf');font-weight:600}@font-face{font-family:'Messiri';src:url('../fonts/ElMessiri-700.ttf');font-weight:700}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-Light.ttf');font-weight:300}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-Regular.ttf');font-weight:400}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-Medium.ttf');font-weight:500}
 @font-face{font-family:'Plex';src:url('../fonts/IBMPlexSansArabic-SemiBold.ttf');font-weight:600}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--olive:#8C7F3E;--olive-l:#B8A95E;--char:#1B1A18;--cream:#EDE6D8;--deep:#4A4526;--paper:#F6F2E9}
+:root{--olive:#7A5F1E;--olive-l:#D4A94E;--char:#14213D;--cream:#F7F4EC;--deep:#1F3158;--paper:#FBF9F3}
 html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff}
-body{font-family:'Plex','Jost',sans-serif;color:var(--char)}
+body{font-family:'Plex','BSD',sans-serif;color:var(--char)}
 .pg{position:relative;overflow:hidden;page-break-after:always;break-after:page}
-.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.02em}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:BSD,sans-serif;font-weight:400;letter-spacing:.02em}
 .abs{position:absolute}
-.lat{font-family:'Jost';letter-spacing:.3em;text-transform:uppercase;font-weight:300}
+.lat{font-family:BSD;letter-spacing:.3em;text-transform:uppercase;font-weight:500}
 """
 def doc(name, w, h, pages, extra=""):
     css = BASE + f"@page{{size:{w}mm {h}mm;margin:0}}.pg{{width:{w}mm;height:{h}mm}}" + extra
@@ -42,7 +42,7 @@ for p in people:
 doc("business-card", 96, 56, pgs)
 
 # ---- ورق رسمي A4 (للطباعة المكتبية: بلا قص ولا خلفيات) ----
-foot = f'<div class="abs" style="left:18mm;right:18mm;bottom:11mm;border-top:0.2mm solid #d9d4c7;padding-top:3mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--deep);font-weight:400"><span>{ADDR}</span><span>{N(PHONE)} · {N(MAIL)}</span><span>السجل التجاري {N(CR)}</span></div>'
+foot = f'<div class="abs" style="left:18mm;right:18mm;bottom:11mm;border-top:0.2mm solid #D9D3C3;padding-top:3mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--deep);font-weight:400"><span>{ADDR}</span><span>{N(PHONE)} · {N(MAIL)}</span><span>السجل التجاري {N(CR)}</span></div>'
 doc("letterhead", 210, 297, [f'<div class="pg" style="background:#fff"><div class="abs" style="left:18mm;top:16mm;width:54mm">{logo("A","logo","ink")}</div>{foot}</div>'])
 
 # ---- ورقة تعريف DL 210×99 ----
@@ -55,7 +55,7 @@ doc("envelope-DL", 226, 116, [env_front, env_back])
 
 # ---- بطاقة موظف CR80: 54×86 + قص = 60×92 ----
 idf = f'''<div class="pg" style="background:var(--char);color:var(--cream)"><div class="abs" style="left:0;right:0;top:9mm;display:flex;justify-content:center"><div style="width:36mm">{logo("A","logo","paper",tagline=False)}</div></div>
- <div class="abs" style="left:17mm;top:30mm;width:26mm;height:32mm;background:rgba(237,230,216,.1);border:0.3mm dashed rgba(237,230,216,.4);display:flex;align-items:center;justify-content:center;font-size:6pt;text-align:center">[صورة]</div>
+ <div class="abs" style="left:17mm;top:30mm;width:26mm;height:32mm;background:rgba(247,244,236,.1);border:0.3mm dashed rgba(247,244,236,.4);display:flex;align-items:center;justify-content:center;font-size:6pt;text-align:center">[صورة]</div>
  <div class="abs" style="left:0;right:0;top:66mm;text-align:center"><div style="font-size:11pt;font-weight:600">[الاسم]</div><div style="font-size:7pt;margin-top:1mm;font-weight:300">[المسمى الوظيفي]</div></div></div>'''
 idb = f'''<div class="pg" style="background:var(--cream)"><div class="abs" style="left:0;right:0;top:12mm;display:flex;justify-content:center"><div style="width:14mm">{logo("A","icon","ink")}</div></div>
  <div class="abs" style="left:8mm;right:8mm;top:34mm;text-align:center;font-size:7pt;line-height:2;font-weight:400"><div style="font-weight:600">Golden Vale</div><div>{ADDR}</div><div>{N(PHONE)}</div><div>{N(MAIL)}</div><div style="color:var(--deep);margin-top:3mm;font-size:6pt">السجل التجاري {N(CR)}</div></div>
@@ -71,7 +71,7 @@ doc("folder-cover-artwork", 446, 311, [fold])
 
 # ---- صورة رمزية 1080 (PNG) ----
 av = lambda bg, mode: f'<div style="width:1080px;height:1080px;background:{bg};display:flex;align-items:center;justify-content:center"><div style="width:560px">{logo("A","icon",mode)}</div></div>'
-open(f"{BUILD}/st_avatar_dark.html", "w", encoding="utf-8").write(f'<!doctype html><meta charset="utf-8"><style>body{{margin:0}}</style>{av("#1B1A18","paper")}')
-open(f"{BUILD}/st_avatar_light.html", "w", encoding="utf-8").write(f'<!doctype html><meta charset="utf-8"><style>body{{margin:0}}</style>{av("#EDE6D8","ink")}')
+open(f"{BUILD}/st_avatar_dark.html", "w", encoding="utf-8").write(f'<!doctype html><meta charset="utf-8"><style>body{{margin:0}}</style>{av("#14213D","paper")}')
+open(f"{BUILD}/st_avatar_light.html", "w", encoding="utf-8").write(f'<!doctype html><meta charset="utf-8"><style>body{{margin:0}}</style>{av("#F7F4EC","ink")}')
 open(f"{BUILD}/st_logo_white.html", "w", encoding="utf-8").write(f'<!doctype html><meta charset="utf-8"><style>body{{margin:0;background:#fff}}</style><div style="width:640px;padding:30px;background:#fff">{logo("A","logo","ink")}</div>')
 print("ok")

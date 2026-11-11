@@ -15,7 +15,7 @@ def ftr(n, left=120):
     return f'<div class="ftr" style="left:{left}px"><span class="num" style="font-size:20px">{n:02d}</span><span class="lat" style="font-size:14px">Company Profile · Riyadh · 2026</span></div>'
 def photo(name, x, y, w, h, tag=True, anchor="left", cut=CUT):
     clip = f"polygon(0 0,{w-cut}px 0,{w}px {cut}px,{w}px {h}px,0 {h}px)"
-    t = '<span style="position:absolute;left:0;bottom:0;background:rgba(27,26,24,.72);color:#EDE6D8;font-size:13px;padding:4px 14px">صورة توضيحية</span>' if tag else ""
+    t = '<span style="position:absolute;left:0;bottom:0;background:rgba(20,33,61,.72);color:#F7F4EC;font-size:13px;padding:4px 14px">صورة توضيحية</span>' if tag else ""
     return (f'<div style="position:absolute;{anchor}:{x}px;top:{y}px;width:{w}px;height:{h}px;clip-path:{clip};overflow:hidden;background:var(--char)">'
             f'<img src="../images/{name}.jpg" style="width:100%;height:100%;object-fit:cover;display:block">{t}</div>')
 def ph(x, y, w, h, text="[صورة — تُضاف لاحقًا]", anchor="left"):
@@ -37,7 +37,7 @@ SECS = [("نظرة عامة","Overview",3),("كلمة رئيس مجلس الإد
         ("مراحل التنفيذ","Project Phases",15),("الجودة والسلامة","Quality & Safety",16),("لماذا Golden Vale","Why Golden Vale",17),("طرق التعاون","Engagement",18),
         ("معرض الصور","Gallery",19),("نموذج دراسة حالة","Case Study",20),("العملاء والشركاء","Clients",21),("الفريق","Team",22),("هويتنا البصرية","Our Identity",23),("التواصل","Contact",24)]
 def row(i, a, b, p):
-    return (f'<div style="display:flex;align-items:baseline;gap:22px;border-top:1px solid rgba(27,26,24,.13);padding:15px 0"><span class="num olive" style="font-size:28px;width:56px">{i+1:02d}</span>'
+    return (f'<div style="display:flex;align-items:baseline;gap:22px;border-top:1px solid rgba(20,33,61,.13);padding:15px 0"><span class="num olive" style="font-size:28px;width:56px">{i+1:02d}</span>'
             f'<span style="font-size:27px;font-weight:400;flex:1">{a}</span><span class="lat" style="font-size:12px;color:var(--deep)">{b}</span><span class="num" style="font-size:22px;width:44px;text-align:left">{p:02d}</span></div>')
 def contents(n):
     c1 = "".join(row(i, *SECS[i]) for i in range(9)); c2 = "".join(row(i, *SECS[i]) for i in range(9, 18))
@@ -46,8 +46,8 @@ def contents(n):
 add(contents)
 
 # 03 نظرة عامة
-FACTS = [("الاسم التجاري","Golden Vale"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300">7055194109</span>')]
-fx = "".join(f'<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(27,26,24,.13);padding:15px 0;font-size:23px"><span class="deepc" style="font-weight:500">{a}</span><span style="font-weight:300">{b}</span></div>' for a, b in FACTS)
+FACTS = [("الاسم التجاري","Golden Vale"),("الكيان","شركة ذات مسؤولية محدودة (شخص واحد)"),("التأسيس","2026"),("المقر","الرياض، المملكة العربية السعودية"),("المجال","الدعاية والإعلان وتنظيم الفعاليات"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:BSD;font-weight:500">7055194109</span>')]
+fx = "".join(f'<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(20,33,61,.13);padding:15px 0;font-size:23px"><span class="deepc" style="font-weight:500">{a}</span><span style="font-weight:300">{b}</span></div>' for a, b in FACTS)
 add(lambda n: hdr(n,"نظرة عامة") +
     f'<div style="position:absolute;right:120px;top:190px;width:980px"><div class="lat olive" style="font-size:18px;margin-bottom:22px">Overview</div><h1>وكالة سعودية للدعاية والإعلان وتنظيم الفعاليات</h1>'
     f'<p style="margin-top:34px">تأسست {BV} عام 2026 في الرياض لتقدّم للعلامات التجارية والجهات حلولًا متكاملة في الدعاية والإعلان وتنظيم الفعاليات وإدارة الهوية البصرية وتصميم التجارب الإبداعية، عبر نقطة اتصال واحدة من الفكرة حتى التسليم.</p>'
@@ -59,12 +59,12 @@ add(lambda n: ph(0,0,640,1080,"[صورة رئيس مجلس الإدارة — ت
     '<div style="position:absolute;right:120px;top:130px;width:1000px"><div class="lat olive" style="font-size:18px;margin-bottom:34px">Chairman\'s Message</div>'
     '<h2 style="font-weight:400;font-size:52px;line-height:1.55">نؤمن أن لكل علامة حضورًا يستحق أن يُصنع بعناية، وأن الفعالية الناجحة تبدأ بفكرة واضحة وتنتهي بتسليم منضبط.</h2>'
     '<p style="margin-top:36px;font-size:25px">تنطلق '+BV+' في مرحلة يشهد فيها قطاع الفعاليات والترفيه في المملكة نموًا متسارعًا ضمن مستهدفات رؤية 2030. ونلتزم بأن نكون شريكًا يُعتمد عليه في الجودة والمواعيد والشفافية، وببناء كل علاقة مع عملائنا على الثقة والنتائج.</p>'
-    f'<div style="border-top:1px solid rgba(27,26,24,.13);margin-top:44px;padding-top:26px"><h3>فهد سعد العجمي</h3><div class="deepc" style="font-size:22px;margin-top:4px">المؤسس ورئيس مجلس الإدارة</div><div class="small deepc" style="margin-top:14px">{PH} مسودة للمراجعة والاعتماد قبل النشر.</div></div></div>', "cream")
+    f'<div style="border-top:1px solid rgba(20,33,61,.13);margin-top:44px;padding-top:26px"><h3>فهد سعد العجمي</h3><div class="deepc" style="font-size:22px;margin-top:4px">المؤسس ورئيس مجلس الإدارة</div><div class="small deepc" style="margin-top:14px">{PH} مسودة للمراجعة والاعتماد قبل النشر.</div></div></div>', "cream")
 
 # 05 الرؤية والرسالة
 add(lambda n: hdr(n,"الرؤية والرسالة") +
     '<div style="position:absolute;right:120px;top:260px;width:720px"><div class="lat" style="color:var(--olive-l);font-size:18px">Vision</div><h1 style="margin:22px 0 30px;color:var(--cream)">رؤيتنا</h1><p style="margin-top:36px;font-size:32px;line-height:1.9">أن نكون الشريك الأول للعلامات والجهات في المملكة لصناعة حضور لا يُنسى.</p></div>'
-    '<div style="position:absolute;left:50%;top:230px;bottom:200px;width:1px;background:rgba(237,230,216,.2)"></div>'
+    '<div style="position:absolute;left:50%;top:230px;bottom:200px;width:1px;background:rgba(247,244,236,.2)"></div>'
     '<div style="position:absolute;left:120px;top:260px;width:720px"><div class="lat" style="color:var(--olive-l);font-size:18px">Mission</div><h1 style="margin:22px 0 30px;color:var(--cream)">رسالتنا</h1><p style="margin-top:36px;font-size:32px;line-height:1.9">تحويل أهداف عملائنا إلى حملات وفعاليات متقنة، عبر منهجية واضحة تجمع الفكرة والتصميم والإنتاج والتشغيل.</p></div>' + ftr(n), "dark")
 
 # 06 القيم
@@ -87,7 +87,7 @@ SERV = [("01","Advertising","الدعاية والإعلان","حملات تبد
 def service(i):
     num, en, ar, desc, subs, img, dk = SERV[i]
     def f(n):
-        boxes = "".join(f'<div style="border:1.5px solid {"rgba(237,230,216,.28)" if dk else "rgba(27,26,24,.18)"};padding:22px 26px;font-size:24px;font-weight:400;background:{"transparent" if dk else "var(--cream)"}">{s}</div>' for s in subs)
+        boxes = "".join(f'<div style="border:1.5px solid {"rgba(247,244,236,.28)" if dk else "rgba(20,33,61,.18)"};padding:22px 26px;font-size:24px;font-weight:400;background:{"transparent" if dk else "var(--cream)"}">{s}</div>' for s in subs)
         c = "var(--olive-l)" if dk else "var(--olive)"
         return (hdr(n,"خدماتنا") + photo(img,120,170,880,540) +
                 f'<div style="position:absolute;left:120px;top:740px;width:880px;display:grid;grid-template-columns:1fr 1fr;gap:16px">{boxes}</div>'
@@ -104,7 +104,7 @@ add(lambda n: hdr(n,"القطاعات المستهدفة") + title("Target Secto
 # 13 نموذج التنفيذ
 STEPS4 = [("التصميم والتصور","تصاميم ثلاثية الأبعاد ومقاسات معتمدة قبل أي تصنيع."),("التصنيع والإنتاج","إنتاج العناصر وفق المواصفات المعتمدة وفحصها."),("التركيب والتشغيل","تركيب في الموقع وتشغيل بإشراف مباشر."),("الفك والتسليم","فك وإعادة الموقع وتسليم بمحضر استلام.")]
 def delivery(n):
-    out = "".join(f'<div style="background:rgba(237,230,216,.06);padding:34px 30px;height:430px"><div class="num" style="font-size:44px;color:var(--olive-l)">{i+1:02d}</div><h3 style="margin:84px 0 14px;font-size:34px;color:var(--cream)">{a}</h3><p style="font-size:22px;line-height:1.8;color:var(--cream)">{b}</p></div>' for i, (a, b) in enumerate(STEPS4))
+    out = "".join(f'<div style="background:rgba(247,244,236,.06);padding:34px 30px;height:430px"><div class="num" style="font-size:44px;color:var(--olive-l)">{i+1:02d}</div><h3 style="margin:84px 0 14px;font-size:34px;color:var(--cream)">{a}</h3><p style="font-size:22px;line-height:1.8;color:var(--cream)">{b}</p></div>' for i, (a, b) in enumerate(STEPS4))
     return (hdr(n,"نموذج التنفيذ") + title("Delivery Model","من التصميم إلى التسليم",dark=True,top=180) +
             f'<div style="position:absolute;left:120px;right:120px;top:430px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">{out}</div>'
             f'<div style="position:absolute;right:120px;top:900px;font-size:19px;color:var(--olive-l)">{PH} يُحدَّد ما يُنفَّذ داخليًا وما يُنفَّذ عبر شركاء إنتاج معتمدين.</div>' + ftr(n))
@@ -113,7 +113,7 @@ add(delivery, "dark")
 # 14 منهجية العمل
 METH = [("الاستماع","نفهم هدفك وجمهورك وميزانيتك."),("التصور","نقدّم الفكرة والتصاميم وعرض السعر."),("التنفيذ","إنتاج وتشغيل بإشراف مباشر."),("المتابعة","قياس الأثر وتقرير ختامي.")]
 def meth(n):
-    st = "".join(f'<div style="display:flex;align-items:center;gap:44px;border-top:1px solid rgba(27,26,24,.13);padding:24px 0"><span class="num olive" style="font-size:64px;width:130px">{i+1:02d}</span><div><h3 style="font-size:40px">{a}</h3><p class="small" style="font-size:24px;line-height:1.6">{b}</p></div></div>' for i, (a, b) in enumerate(METH))
+    st = "".join(f'<div style="display:flex;align-items:center;gap:44px;border-top:1px solid rgba(20,33,61,.13);padding:24px 0"><span class="num olive" style="font-size:64px;width:130px">{i+1:02d}</span><div><h3 style="font-size:40px">{a}</h3><p class="small" style="font-size:24px;line-height:1.6">{b}</p></div></div>' for i, (a, b) in enumerate(METH))
     return hdr(n,"منهجية العمل") + title("How We Work","آلية العمل",top=180,w=1000) + f'<div style="position:absolute;right:120px;top:340px;width:1000px">{st}</div>' + photo("method",120,190,520,760) + ftr(n)
 add(meth)
 
@@ -129,7 +129,7 @@ add(phases, "cream")
 # 16 الجودة والسلامة
 QS = [("فحص الجودة قبل التسليم","نراجع العناصر المصنّعة والمطبوعة على المواصفات المعتمدة قبل شحنها."),("السلامة في المواقع","نلتزم باشتراطات السلامة المهنية في مواقع التركيب والأعمال على الارتفاعات."),("توثيق الاستلام","نوثّق التسليم بمحضر استلام موقّع من العميل."),("ضبط التعديلات","نسجّل أي تعديل في المقاسات أو النطاق ونعتمد أثره على السعر والجدول.")]
 def quality(n):
-    out = "".join(f'<div style="display:flex;gap:30px;align-items:baseline;border-top:1px solid rgba(27,26,24,.13);padding:22px 0"><span class="num olive" style="font-size:40px;width:70px">{i+1:02d}</span><div><h3 style="font-size:32px">{a}</h3><p style="font-size:22px;line-height:1.7">{b}</p></div></div>' for i, (a, b) in enumerate(QS))
+    out = "".join(f'<div style="display:flex;gap:30px;align-items:baseline;border-top:1px solid rgba(20,33,61,.13);padding:22px 0"><span class="num olive" style="font-size:40px;width:70px">{i+1:02d}</span><div><h3 style="font-size:32px">{a}</h3><p style="font-size:22px;line-height:1.7">{b}</p></div></div>' for i, (a, b) in enumerate(QS))
     return (hdr(n,"الجودة والسلامة") + title("Quality & Safety","التزاماتنا في الجودة والسلامة",top=180) +
             f'<div style="position:absolute;right:120px;top:360px;width:1000px">{out}</div>' + ph(120,360,560,420,"[الشهادات والتراخيص — تُضاف عند توفرها]") + ftr(n))
 add(quality)
@@ -170,7 +170,7 @@ def clients(n):
     boxes = ""
     for c in CL[:12]:
         if c.get("consent"):
-            boxes += f'<div style="height:170px;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(237,230,216,.08);font-size:26px;font-weight:400;color:var(--cream);padding:16px">{c["name"]}</div>'
+            boxes += f'<div style="height:170px;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(247,244,236,.08);font-size:26px;font-weight:400;color:var(--cream);padding:16px">{c["name"]}</div>'
         else:
             boxes += '<div class="ph" style="height:170px;font-size:19px">[عميل — بانتظار الموافقة]<br>[يُضاف]</div>'
     return (hdr(n,"العملاء والشركاء") + title("Clients & Partners","عملاؤنا وشركاؤنا",dark=True,top=160) +
@@ -187,18 +187,18 @@ add(team)
 
 # 23 هويتنا
 def identity(n):
-    sw = [("زيتوني ذهبي",P_["olive"]),("فحمي",P_["char"]),("كريمي",P_["cream"]),("زيتوني فاتح",P_["olive_light"]),("زيتوني عميق",P_["deep"]),("حجر",P_["stone"])]
-    s = "".join(f'<div style="background:{h};height:170px;padding:18px 20px;display:flex;flex-direction:column;justify-content:flex-end;{"border:1px solid rgba(237,230,216,.3);" if h==P_["char"] else ""}color:{"#1B1A18" if h in (P_["cream"],P_["olive_light"],P_["stone"]) else "#EDE6D8"}"><div style="font-size:19px;font-weight:500">{a}</div><div class="num" style="font-size:15px;direction:ltr;text-align:right">{h.upper()}</div></div>' for a, h in sw)
+    sw = [("ذهبي داكن",P_["olive"]),("كحلي ملكي",P_["char"]),("عاجي",P_["cream"]),("ذهبي فاتح",P_["olive_light"]),("كحلي عميق",P_["deep"]),("رملي",P_["stone"])]
+    s = "".join(f'<div style="background:{h};height:170px;padding:18px 20px;display:flex;flex-direction:column;justify-content:flex-end;{"border:1px solid rgba(247,244,236,.3);" if h==P_["char"] else ""}color:{"#14213D" if h in (P_["cream"],P_["olive_light"],P_["stone"]) else "#F7F4EC"}"><div style="font-size:19px;font-weight:500">{a}</div><div class="num" style="font-size:15px;direction:ltr;text-align:right">{h.upper()}</div></div>' for a, h in sw)
     return (hdr(n,"هويتنا البصرية") + title("Our Identity","هويتنا البصرية",dark=True,top=160) +
             f'<div style="position:absolute;left:120px;top:380px;width:560px">{logo("A","logo","paper")}</div>' +
             f'<div style="position:absolute;right:120px;top:360px;width:900px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px">{s}</div>' +
-            '<div style="position:absolute;right:120px;top:780px;width:900px;font-size:22px;line-height:1.9;color:var(--cream)">الخطوط: <span style="font-family:Jost">Jost</span> للاتينية، وIBM Plex Sans Arabic للعربية.<br>الشعار: خط واحد منضبط وخط أفق يعلو الاسم.</div>' + ftr(n))
+            '<div style="position:absolute;right:120px;top:780px;width:900px;font-size:22px;line-height:1.9;color:var(--cream)">الخطوط: Big Shoulders Display للاتينية، وEl Messiri للعناوين العربية، وIBM Plex Sans Arabic للنص.<br>الشعار: مونوغرام GV داخل مربع بزوايا مدوّرة، يليه الاسم GOLDEN VALE.</div>' + ftr(n))
 add(identity, "dark")
 
 # 24 التواصل
-CT = [("الاسم التجاري",f"{BV} — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:Jost;font-weight:300">info@goldenvale.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:Jost;font-weight:300;letter-spacing:.04em">7055194109</span>')]
+CT = [("الاسم التجاري",f"{BV} — شركة ذات مسؤولية محدودة (شخص واحد)"),("المؤسس","فهد سعد العجمي"),("الجوال",'<span class="ltr num" style="font-weight:300">0506221548</span>'),("البريد الإلكتروني",'<span class="ltr" style="font-family:BSD;font-weight:500">info@goldenvale.com</span>'),("المقر","الرياض، المملكة العربية السعودية"),("الرقم الوطني الموحد (السجل التجاري)",'<span class="ltr" style="font-family:BSD;font-weight:500;letter-spacing:.04em">7055194109</span>')]
 def contact(n):
-    cr = "".join(f'<div style="border-top:1px solid rgba(27,26,24,.13);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a, b in CT)
+    cr = "".join(f'<div style="border-top:1px solid rgba(20,33,61,.13);padding:15px 0"><div class="deepc" style="font-size:19px">{a}</div><div style="font-size:31px;font-weight:400;margin-top:4px">{b}</div></div>' for a, b in CT)
     return (f'<div style="position:absolute;left:0;top:0;bottom:0;width:720px;background:var(--char);display:flex;align-items:center;justify-content:center"><div style="width:420px">{logo("A","logo","paper")}</div></div>' +
             hdr(n,"التواصل",780) + f'<div style="position:absolute;right:120px;top:180px;width:900px"><div class="lat olive" style="font-size:18px;margin-bottom:18px">Contact</div><h1 style="margin-bottom:40px">تواصل معنا</h1>{cr}</div>')
 add(contact, "cream")
@@ -209,10 +209,10 @@ add(lambda n: f'<div style="position:absolute;left:0;right:0;top:300px;display:f
 
 assert len(pages) == 25, len(pages)
 H = html("Golden Vale — الملف التعريفي", pages)
-H = H.replace("border-bottom:1px solid rgba(140,127,62,.45)", "border-bottom:none")
-H = H.replace("rgba(140,127,62,", "rgba(27,26,24,").replace("rgba(184,169,94,", "rgba(237,230,216,")
-H = re.sub(r"rgba\(27,26,24,\.\d+\)", "rgba(27,26,24,.13)", H)
-H = re.sub(r"rgba\(237,230,216,\.\d+\)", "rgba(237,230,216,.2)", H)
+H = H.replace("border-bottom:1px solid rgba(122,95,30,.45)", "border-bottom:none")
+H = H.replace("rgba(122,95,30,", "rgba(20,33,61,").replace("rgba(212,169,78,", "rgba(247,244,236,")
+H = re.sub(r"rgba\(27,26,24,\.\d+\)", "rgba(20,33,61,.13)", H)
+H = re.sub(r"rgba\(237,230,216,\.\d+\)", "rgba(247,244,236,.2)", H)
 H = H.replace(".rule{height:3px;width:120px;background:var(--olive)}", ".rule{display:none}")
 open("build/profile25.html", "w", encoding="utf-8").write(H)
 print(len(pages), "pages")
